@@ -1,0 +1,4 @@
+
+KuiNameplatesCoreCharacterSaved = {
+	["profile"] = "RealUI",
+}

@@ -1,0 +1,10 @@
+## Interface: 80200
+## Title: Lib: IconFonts
+## Notes: Provides easy access to icon font glyphs
+## Author: Gethe
+## Version: 1.0.1
+## X-Curse-Project-ID: 339865
+
+LibStub\LibStub.lua
+lib.xml
+tests.lua

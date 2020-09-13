@@ -1,0 +1,8 @@
+Version: 1
+Frame: Minimap
+FrameLevel: 1
+Anchor: TOPLEFT
+X: 7
+Y: -7
+W: 134
+H: 134

@@ -1,0 +1,14 @@
+## Interface: 80300
+## Title: nibRealUI Config
+## Notes: Graphical configuration for RealUI
+## Author: Gethe
+## Version: 2.2.1
+## OptionalDeps: AceGUI-3.0-SharedMediaWidgets
+## RequiredDeps: nibRealUI
+## LoadOnDemand: 1
+
+Libs\Libs.xml
+
+Config.lua
+ConfigBar.lua
+Advanced.lua

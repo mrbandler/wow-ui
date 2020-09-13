@@ -1,0 +1,1804 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+	<Script file="Preference.lua"/>
+
+    <Button name="NarciPreferenceColorButtonTemplate" virtual="true" mixin="NarciUIMixin">
+        <Size x="18" y="18"/>
+		<HitRectInsets>
+			<AbsInset left="-2" right="-2" top="-2" bottom="-2"/>
+		</HitRectInsets>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Color">
+                    <Size x="14" y="14"/>
+                    <Anchors>
+                        <Anchor point="CENTER" relativeKey="$parent" relativePoint="CENTER" x="0" y="0"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+                <Texture parentKey="Overlay" hidden="true">
+                    <Size x="14" y="14"/>
+                    <Color r="1" g="1" b="1" a="0.35"/>
+                    <Anchors>
+                        <Anchor point="CENTER" relativeKey="$parent" relativePoint="CENTER" x="0" y="0"/>
+                    </Anchors>
+                </Texture>
+            </Layer>
+        </Layers>
+		<Frames>
+			<Frame inherits="NarciLineBorderTemplate"/>
+		</Frames>
+        <Scripts>
+            <OnEnter>
+                self.Overlay:Show();
+            </OnEnter>
+            <OnLeave>
+                self.Overlay:Hide();
+            </OnLeave>
+        </Scripts>
+    </Button>
+
+    <Slider name="Narci_PreferenceSliderTemplate_Horizontal" inherits="NarciHorizontalSliderWithMarksTemplate" virtual="true">
+        <Size x="200" y="6"/>
+    </Slider>
+
+    <Frame name="Narci_Preference_TabTemplate" virtual="true">
+        <!--Layers>
+            <Layer level="BACKGROUND">
+                <Texture>
+                    <Color r="1" g="0" b="0" a="0.25"/>
+                </Texture>
+            </Layer>
+        </Layers-->
+        <Scripts>
+            <OnLoad>
+                self:SetHeight(self:GetParent():GetParent():GetHeight());
+            </OnLoad>
+        </Scripts>
+    </Frame>
+
+    <Button name="Narci_TapButtonTemplate" registerForClicks="LeftButtonUp, RightButtonUp" virtual="true" ignoreParentScale="true">
+		<Size>
+			<AbsDimension y="16"/>
+		</Size>
+        <PushedTextOffset>
+            <AbsDimension x="-1" y="-0.6"/>
+        </PushedTextOffset>
+        <Anchors>
+            <Anchor point="LEFT"/>
+            <Anchor point="RIGHT"/>
+        </Anchors>
+        <Layers>
+            <Layer level="ARTWORK">
+                <Texture parentKey="HighlightColor" setAllPoints="true" Alpha="1" alphaMode="NORMAL" hidden="true">
+                    <Color a="1" r="0.1372" g="0.3765" b="0.5765"/>
+                </Texture>
+				<Texture parentKey="SelectedColor" setAllPoints="true" hidden="false" Alpha="0.6">
+					<Color a="1" r="0.1372" g="0.3765" b="0.5765"/>
+				</Texture>
+            </Layer>
+        </Layers>
+		<ButtonText name="$parentTitleText" inherits="NarciNonInteractiveFont" justifyH="LEFT" maxLines="1" parentKey="Name">
+            <Color a="1" r="0.72" g="0.72" b="0.72"/>
+            <Anchors>
+                <Anchor point="LEFT" relativeKey="$parent" relativePoint="LEFT" x="10" y="0"/>
+                <Anchor point="RIGHT" relativeKey="$parent" relativePoint="RIGHT" x="-10" y="0"/>
+            </Anchors>
+		</ButtonText>
+	
+        <Scripts>
+            <OnClick function="Narci_TapButton_OnClick"/>
+            <OnEnter>
+                self.HighlightColor:Show();
+            </OnEnter>
+            <OnLeave>
+                self.HighlightColor:Hide();
+            </OnLeave>
+            <!--OnShow function="Narci_SetTabButtonColorTheme"/-->
+        </Scripts>
+    </Button>
+
+    <Button name="Narci_PreferenceButton" parent="Narci_PhotoModeController" inherits="Narci_RoundButtonTemplate">
+        <Anchors>
+            <Anchor point="LEFT" relativeTo="PhotoModeControllerBar" relativePoint="RIGHT" x="0"/>
+        </Anchors>
+		<Size>
+			<AbsDimension x="24" y="24"/>
+		</Size>
+        <HitRectInsets>
+            <AbsInset left="-4" right="-10" top="-10" bottom="-10"/>
+        </HitRectInsets>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\AddOns\Narcissus\Art\Tooltip\Gear" Alpha="1" hidden="false" parentKey="Icon">
+					<TexCoords left="0" right="0.5" top="0" bottom="1"/>
+                    <Size x="12" y="12"/>
+					<Anchors>
+						<Anchor point="CENTER" relativePoint="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture file="Interface\AddOns\Narcissus\Art\Widgets\LightSetup\UI" Alpha="1" hidden="false" parentKey="Border">
+					<TexCoords left="0.75" right="0.8359375" top="0" bottom="0.171875"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+        <HighlightTexture file="Interface\AddOns\Narcissus\Art\Tooltip\Gear" Alpha="0.5">
+            <TexCoords left="0.5" right="1" top="0" bottom="1"/>
+            <Anchors>
+                <Anchor point="TOPLEFT" relativeKey="$parent.Icon" relativePoint="TOPLEFT"/>
+                <Anchor point="BOTTOMRIGHT" relativeKey="$parent.Icon" relativePoint="BOTTOMRIGHT"/>
+            </Anchors>
+        </HighlightTexture>
+        <Scripts>
+            <OnLoad>
+                self.tooltipHeadline = NARCI_PREFERENCE;
+                self.tooltipLineOpen = NARCI_PREFERENCE_TOOLTIP;
+            </OnLoad>
+            <OnEnter>
+                Narci_ShowButtonTooltip(self);
+            </OnEnter>
+            <OnLeave>
+                Narci:HideButtonTooltip(self);
+            </OnLeave>
+            <OnClick function="Narci_PreferenceButton_OnClick"/>
+        </Scripts>
+    </Button>	
+
+    <Texture name="NarciPinkHeartTemplate" file="Interface\AddOns\Narcissus\Art\Preference\PinkHeart" virtual="true">
+        <Size x="32" y="32"/>
+        <Animations>
+            <AnimationGroup parentKey="animIn">
+                <Scale scaleX="0.5" scaleY="0.5" duration="0" order="1"/>
+                <Scale scaleX="2.5" scaleY="2.5" duration="0.15" order="2"/>
+                <Scale startDelay="0.15" scaleX="0.8" scaleY="0.8" duration="0.15" order="2"/>
+                <Translation parentKey="Translation" offsetY="-360" duration="6" order="2"/>
+                <Scripts>
+                    <OnPlay>
+                        self:GetParent():GetParent().ReusedTexture = nil;
+                    </OnPlay>
+                    <OnFinished>
+                        local tex = self:GetParent();
+                        tex:SetAlpha(0);
+                        tex:GetParent().ReusedTexture = tex;
+                    </OnFinished>
+                    <OnStop>
+                        local tex = self:GetParent();
+                        tex:SetAlpha(0);
+                        tex:GetParent().ReusedTexture = tex;    
+                    </OnStop>
+                </Scripts>
+            </AnimationGroup>
+        </Animations>  
+    </Texture>
+
+    <Frame name="Narci_Preference" parent="Narci_Vignette" ignoreParentScale="true" FrameStrata="DIALOG" movable="false" enableMouse="true" enableMouseMotion="true" hidden="true" Alpha="0" scale="0.72">
+        <Size x="640" y="395"/>
+        <Anchors>
+            <Anchor point="CENTER" relativeTo="Narci_VirtualLineCenter" relativePoint="CENTER" x="0"/>
+        </Anchors>
+		<Layers>
+			<Layer level="BACKGROUND" textureSubLevel="1">
+				<Texture setAllPoints="true" parentKey="Border">
+					<Color r="0.07" g="0.07" b="0.08" a="0.95"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="0" y="0"/>
+						<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+            <Layer level="BACKGROUND" textureSubLevel="10">
+                <Texture parentKey="HeaderBackground" setAllPoints="true">
+                    <Size y="20"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT"/>
+					</Anchors>                    
+                    <Color a="1" r="1" g="1" b="1"/>
+                    <Gradient orientation="VERTICAL">
+                        <MinColor a="1" r="0.0" g="0.0" b="0.0"/>
+                        <MaxColor a="1" r="0.1" g="0.1" b="0.1"/>
+                    </Gradient>
+                </Texture>
+            </Layer>
+            <Layer level="OVERLAY">
+                <Texture inherits="NarciTopShadowTemplate"/>
+
+				<FontString parentKey="Header" inherits="AAAStatusNameMedium" justifyH="CENTER" justifyV="MIDDLE" text="NARCI_PREFERENCE">
+					<Size x="0" y="0"/>
+                    <Color r="0.4" g="0.4" b="0.4" a="1"/>
+					<Anchors>
+						<Anchor point="CENTER" relativeKey="$parent.HeaderBackground" relativePoint="CENTER" x="0" y="0"/>
+					</Anchors>
+				</FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Frame>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="-11" y="31"/>
+                    <Anchor point="BOTTOMRIGHT" relativeKey="$parent" relativePoint="BOTTOMRIGHT" x="11" y="-11"/>
+                </Anchors>
+                <Backdrop edgeFile="Interface\AddOns\Narcissus\Art\Tooltip\Tooltip-White-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="24"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="24"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="0" right="0" top="0" bottom="0"/>
+                    </BackgroundInsets>
+                </Backdrop>
+            </Frame>
+
+            <Frame parentKey="LoveContainer" clipChildren="true" Alpha="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="2" y="-2"/>
+                    <Anchor point="BOTTOMRIGHT" relativeKey="$parent" relativePoint="BOTTOMRIGHT" x="-2" y="2"/>
+                </Anchors>
+                <Scripts>
+                    <OnHide>
+                        self:StopAnimating();
+                    </OnHide>
+                </Scripts>
+            </Frame>
+
+            <Button inherits="NarciCloseButtonTemplate">
+                <Anchors>
+                    <Anchor point="RIGHT" relativeKey="$parent.HeaderBackground" relativePoint="RIGHT" x="-4" y="0"/>
+                </Anchors>
+            </Button>
+
+            <ScrollFrame name="$parent_ListScrollFrame" parentKey="ListScrollFrame">   <!--Narci_Preference_ListScrollFrame.scrollBar-->
+                <Size x="520" y="0"/>
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativeKey="$parent" relativePoint="TOPRIGHT" x="-2" y="-2"/>
+                    <Anchor point="BOTTOMRIGHT" relativeKey="$parent" relativePoint="BOTTOMRIGHT" x="-2" y="2"/>
+                </Anchors>
+                <ScrollChild>
+                    <Frame name="$parentScrollChild" parentKey="scrollChild">
+                        <Size x="1" y="930"/>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT"/>
+                            <Anchor point="TOPRIGHT" relativeKey="$parent" relativePoint="TOPRIGHT"/>
+                        </Anchors>
+                        <Layers>
+                            <Layer level="OVERLAY" textureSubLevel="3">
+                                <Texture setAllPoints="true">
+                                    <Color r="0.0" g="0.0" b="0.0" a="0.0"/>
+                                </Texture>
+                            </Layer>
+                        </Layers>
+                        <Frames>
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="Tab1">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent" relativePoint="TOPRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="UI_SCALE">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="Cate2" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="ITEM_NAMES">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate1" relativePoint="TOPLEFT" x="0" y="-80"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="Cate3" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_ATTRIBUTE_FRAME">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                    <Anchor point="TOPLEFT" relativeKey="$parent.Cate2" relativePoint="TOPLEFT" x="0" y="-160"/>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>                           
+                                <Frames>
+                                    <Slider name="Narci_GlobalScaleSlider" inherits="Narci_PreferenceSliderTemplate_Horizontal" parentKey="GlobalScaleSlider" valueStep="0.1" obeyStepOnDrag="true" minValue="0.7" maxValue="1">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="140" y="-24"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnEvent>
+                                                --Graphics_ControlRefreshValue(self);
+                                            </OnEvent>
+                                            <OnValueChanged function="Narci_GlobalScaleSlider_OnValueChanged"/>
+                                            <OnLoad>
+                                                self.Label:SetText(ALL); 
+                                                NarciAPI_SliderWithSteps_OnLoad(self);
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Slider>
+                                    <Slider name="Narci_ItemNameSizeSlider" inherits="Narci_PreferenceSliderTemplate_Horizontal" parentKey="ItemNameSizeSlider" valueStep="1" obeyStepOnDrag="true" minValue="10" maxValue="12">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="140" y="-24"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnEvent>
+                                                --Graphics_ControlRefreshValue(self);
+                                            </OnEvent>
+                                            <OnValueChanged function="Narci_ItemNameSizeSlider_OnValueChanged"/>
+                                            <OnLoad>
+                                                self.Label:SetText(FONT_SIZE);
+                                                NarciAPI_SliderWithSteps_OnLoad(self);
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Slider>
+                                    <Slider name="Narci_ItemNameWidthSlider" inherits="Narci_PreferenceSliderTemplate_Horizontal" parentKey="ItemNameWidthSlider" valueStep="20" obeyStepOnDrag="true" minValue="100" maxValue="200">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.ItemNameSizeSlider" relativePoint="LEFT" x="0" y="-46"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnEvent>
+                                                --Graphics_ControlRefreshValue(self);
+                                            </OnEvent>
+                                            <OnValueChanged function="Narci_ItemNameWidthSlider_OnValueChanged"/>
+                                            <OnLoad>
+                                                self.Label:SetText(NARCI_TEXT_WIDTH);
+                                                NarciAPI_SliderWithSteps_OnLoad(self);
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Slider>
+                                    <Button name="Narci_TruncateSwitch" inherits="NarciCheckButtonTemplate">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="18" y="-112"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_TRUNCATE_TEXT)
+                                            </OnLoad>
+                                            <OnClick function="Narci_TruncateSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                    <Button name="Narci_DetailedStatsSwitch" inherits="NarciCheckButtonTemplate">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate3" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(Narci.L["Show Detailed Stats"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_DetailedStatsSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="Tab2">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.Tab1" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.Tab1" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_MINIMAP_BUTTON">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                    <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="Cate2" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_HOTKEY">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate1" relativePoint="TOPLEFT" x="0" y="-92"/>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>                           
+                                <Frames>
+
+                                    <Button name="Narci_MinimapButtonSwitch" inherits="NarciCheckButtonTemplate" parentKey="MinimapSwitch">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(ENABLE)
+                                            </OnLoad>
+                                            <OnShow function="Narci_MinimapButtonSwitch_OnShow"/>
+                                            <OnClick function="Narci_MinimapButtonSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_MinimapButtonParentSwitch" inherits="NarciCheckButtonTemplate" parentKey="MinimapParentSwitch">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeKey="$parent.MinimapSwitch" relativePoint="BOTTOMLEFT" x="0" y="-10"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.Label:SetWidth(120);
+                                                self.Label:SetText(Narci.L["Handled by Other Addons"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_MinimapButtonParentSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_FadeOutSwitch" inherits="NarciCheckButtonTemplate" parentKey="FadeOutSwitch">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="200" y="-24"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="140" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_FADEOUT);
+                                                self.Description:SetText(NARCI_FADEOUT_DESCRIPTION);
+                                            </OnLoad>
+                                            <OnClick function="Narci_FadeOutSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_KeybindingButton" inherits="NarciBindingButtonTemplate">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="140" y="-95"/>
+                                        </Anchors>
+                                        <Size x="160" y="18"/>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.Label:SetText(KEY_BINDING);
+                                            </OnLoad>
+                                            <OnShow function="Narci_KeybindingButton_OnShow"/>
+                                            <OnClick function="Narci_KeybindingButton_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_DoubleTapSwitch" inherits="NarciCheckButtonTemplate" parentKey="DoubleTap">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText("Enable Doule-tap");
+                                                self.Description:SetText(NARCI_DOUBLE_TAP_DESCRIPTION);
+                                            </OnLoad>
+                                            <OnShow function="Narci_DoubleTapSwitch_OnShow"/>
+                                            <OnClick function="Narci_DoubleTapSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_EscapeSwitch" inherits="NarciCheckButtonTemplate">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeKey="$parent.DoubleTap" relativePoint="BOTTOMLEFT" x="0" y="-96"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.Label:SetText(Narci.L["Use Escape Button"]);
+                                                self.Description:SetText(Narci.L["Use Escape Button Description"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_EscapeSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="Tab3" name="NarciPref_Themes">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.Tab2" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.Tab2" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_BORDER_THEME">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Preference\BorderTheme" Alpha="1" hidden="false" parentKey="Preview">
+                                            <TexCoords left="0" right="0.5" top="0" bottom="1"/>
+                                            <Size x="128" y="128"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate1" relativePoint="TOPLEFT" x="250" y="10"/>
+                                            </Anchors>
+                                        </Texture>
+                                        <FontString parentKey="Cate2" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_BORDER_THEME">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                    <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-140"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Preference\TooltipTheme" Alpha="1" hidden="false" parentKey="Preview2">
+                                            <TexCoords left="0" right="1" top="0" bottom="0.5"/>
+                                            <Size x="256" y="128"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate2" relativePoint="TOPLEFT" x="210" y="-22"/>
+                                            </Anchors>
+                                        </Texture>                                     
+                                    </Layer>
+                                </Layers>                           
+                                <Frames>
+                                    <Button inherits="NarciCheckButtonTemplate" parentKey="Theme1" id="1">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="32" y="-34"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_BORDER_THEME_BRIGHT);
+                                                if not self:GetParent().buttons then
+                                                    self:GetParent().buttons = {};  
+                                                end
+                                                tinsert(self:GetParent().buttons, self);
+                                            </OnLoad>
+                                            <OnClick function="Narci_BorderThemeButton_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                    <Button inherits="NarciCheckButtonTemplate" parentKey="Theme2" id="2">
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeKey="$parent.Theme1" relativePoint="BOTTOM" x="0" y="-16"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_BORDER_THEME_DARK);
+                                                tinsert(self:GetParent().buttons, self);
+                                            </OnLoad>
+                                            <OnClick function="Narci_BorderThemeButton_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button inherits="NarciCheckButtonTemplate" parentKey="Tooltip1" id="1">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="32" y="-34"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_BORDER_THEME_BRIGHT);
+                                                if not self:GetParent().TooltipColors then
+                                                    self:GetParent().TooltipColors = {};  
+                                                end
+                                                tinsert(self:GetParent().TooltipColors, self);
+                                            </OnLoad>
+                                            <OnClick function="Narci_TooltipThemeButton_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                    <Button inherits="NarciCheckButtonTemplate" parentKey="Tooltip2" id="2">
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeKey="$parent.Tooltip1" relativePoint="BOTTOM" x="0" y="-16"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_BORDER_THEME_DARK);
+                                                tinsert(self:GetParent().TooltipColors, self);
+                                            </OnLoad>
+                                            <OnClick function="Narci_TooltipThemeButton_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                                <Scripts>
+                                    <OnLoad>
+                                        self:SetHeight(self:GetParent():GetParent():GetHeight());
+                                        self.Cate2:SetText(Narci.L["Tooltip Color"]);
+                                    </OnLoad>
+                                </Scripts>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="Tab4">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.Tab3" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.Tab3" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_FILTERS">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="Cate2" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="SOUND">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate1" relativePoint="TOPLEFT" x="0" y="-216"/>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>                           
+                                <Frames>
+                                    <Slider name="Narci_VignetteStrengthSlider" inherits="Narci_PreferenceSliderTemplate_Horizontal" valueStep="0.1" obeyStepOnDrag="true" minValue="0" maxValue="1">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="140" y="-24"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2" text="NARCI_FILTERS_DESCRIPTION">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" y="-22"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnEvent>
+                                                --Graphics_ControlRefreshValue(self);
+                                            </OnEvent>
+                                            <OnValueChanged function="Narci_VignetteStrengthSlider_OnValueChanged"/>
+                                            <OnLoad>
+                                                self.Label:SetText(NARCI_VIGNETTE_STRENGTH);
+                                                NarciAPI_SliderWithSteps_OnLoad(self);
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Slider>
+                                    <Button name="Narci_GrainEffectSwitch" inherits="NarciCheckButtonTemplate">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="18" y="-112"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_GRAIN_EFFECT);
+                                            </OnLoad>
+                                            <OnClick function="Narci_GrainEffectSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                    <Button name="Narci_WeatherEffectSwitch" inherits="NarciCheckButtonTemplate">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="200" y="-112"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_WEATHER_EFFECT);
+                                            </OnLoad>
+                                            <OnClick function="Narci_WeatherEffectSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_LetterboxEffectSwitch" inherits="NarciCheckButtonTemplate" parentKey="Letterbox">
+                                        <HitRectInsets>
+                                            <AbsInset left="-4" right="-84" top="-4" bottom="-4"/>
+                                        </HitRectInsets>
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeTo="Narci_GrainEffectSwitch" relativePoint="BOTTOM" x="0" y="-16"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_LETTERBOX_EFFECT);
+                                            </OnLoad>
+                                            <OnClick function="Narci_LetterboxEffectSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Slider name="Narci_LetterboxRatioSlider" inherits="Narci_PreferenceSliderTemplate_Horizontal" valueStep="1" obeyStepOnDrag="true" minValue="0" maxValue="1" hidden="true">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Letterbox" relativePoint="RIGHT" x="140" y="0"/>
+                                        </Anchors>
+                                        <Size x="60" y="6"/>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString name="Narci_LetterboxEffectSwitch_Description" inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2" text="NARCI_LETTERBOX_EFFECT_ALERT2">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.$parent.Letterbox.Label" relativePoint="BOTTOMLEFT" y="-6"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnValueChanged function="Narci_LetterboxRatioSlider_OnValueChanged"/>
+                                            <OnLoad>
+                                                self.Label:SetText(NARCI_LETTERBOX_RATIO);
+                                                NarciAPI_SliderWithSteps_OnLoad(self);
+                                                self.KeyLabel:Hide();
+                                                self.KeyLabel2:Show();
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Slider>
+
+                                    <Button name="Narci_FadeMusicSwitch" inherits="NarciCheckButtonTemplate">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_FADE_MUSIC);
+                                            </OnLoad>
+                                            <OnClick function="Narci_FadeMusicSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="Tab5">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.Tab4" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.Tab4" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_CAMERA_MOVEMENT">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                    <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>                           
+                                <Frames>
+                                    <Button name="Narci_CameraOrbitSwitch" inherits="NarciCheckButtonTemplate" parentKey="Orbit">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_CAMERA_ORBIT)
+                                            </OnLoad>
+                                            <OnClick function="Narci_CameraOrbitSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_CameraSafeSwitch" inherits="NarciCheckButtonTemplate" parentKey="CameraSafe">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeKey="$parent.Orbit" relativePoint="BOTTOMLEFT" x="0" y="-60"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2" text="NARCI_CAMERA_SAFE_MODE_DESCRIPTION">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_CAMERA_SAFE_MODE);
+                                            </OnLoad>
+                                            <OnShow>
+                                                if IsAddOnLoaded("DynamicCam") then
+                                                    self.Description:SetText(NARCI_CAMERA_SAFE_MODE_DESCRIPTION.."\n"..NARCI_CAMERA_SAFE_MODE_DESCRIPTION_EXTRA);
+                                                    self.Tick:Hide();
+                                                    self:Disable();
+                                                end
+                                                self:SetScript("OnShow", nil);
+                                            </OnShow>
+                                            <OnClick function="Narci_CameraSafeSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_BustShotSwitch" inherits="NarciCheckButtonTemplate">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeKey="$parent.CameraSafe" relativePoint="BOTTOMLEFT" x="0" y="-60"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <Texture file="Interface\AddOns\Narcissus\Art\Preference\BustShot" parentKey="Preview">
+                                                    <Size x="128" y="96"/>
+                                                    <TexCoords left="0" right="0.5" top="0" bottom="0.75"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+                                                    </Anchors>
+                                                </Texture>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(Narci.L["Use Bust Shot"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_BustShotSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="Tab6">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.Tab5" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.Tab5" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_DEFAULT_LAYOUT">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Preference\Layouts" Alpha="1" hidden="false" parentKey="Preview" name="Narci_DefaultLayoutPreview">
+                                            <TexCoords left="0" right="0.4443359375" top="0" bottom="0.5"/>
+                                            <Size x="192" y="108"/>
+                                            <Anchors>
+                                                <Anchor point="TOPRIGHT" relativeKey="$parent" relativePoint="TOPRIGHT" x="-28" y="-28"/>
+                                            </Anchors>
+                                        </Texture>   
+                                        <FontString parentKey="Cate2" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_3DMODEL">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate1" relativePoint="TOPLEFT" x="0" y="-138"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Preference\FullBody" Alpha="1" hidden="false" parentKey="Preview2" name="Narci_FullBodyPreview">
+                                            <TexCoords left="0" right="0.5" top="0" bottom="1"/>
+                                            <Size x="108" y="108"/>
+                                            <Anchors>
+                                                <Anchor point="RIGHT" relativeKey="$parent.Preview" relativePoint="RIGHT" x="0"/>
+                                                <Anchor point="TOP" relativeKey="$parent.Cate2" relativePoint="BOTTOM" y="0"/>
+                                            </Anchors>
+                                        </Texture>   
+                                    </Layer>
+                                </Layers>                           
+                                <Frames>
+                                    <Button name="Narci_DefalutLayoutButton1" inherits="NarciCheckButtonTemplate" parentKey="Layout1" id="1">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_LAYOUT_1)
+                                                if not self:GetParent().buttons then
+                                                    self:GetParent().buttons = {};  
+                                                end
+                                                tinsert(self:GetParent().buttons, self)
+                                            </OnLoad>
+                                            <OnClick function="Narci_LayoutButtonButton_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                    <Button name="Narci_DefalutLayoutButton2" inherits="NarciCheckButtonTemplate" parentKey="Layout2" id="2">
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeKey="$parent.Layout1" relativePoint="BOTTOM" x="0" y="-16"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_LAYOUT_2)
+                                                tinsert(self:GetParent().buttons, self)
+                                            </OnLoad>
+                                            <OnClick function="Narci_LayoutButtonButton_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                    <Button name="Narci_DefalutLayoutButton3" inherits="NarciCheckButtonTemplate" parentKey="Layout3" id="3">
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeKey="$parent.Layout2" relativePoint="BOTTOM" x="0" y="-16"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_LAYOUT_3)
+                                                tinsert(self:GetParent().buttons, self)
+                                            </OnLoad>
+                                            <OnClick function="Narci_LayoutButtonButton_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_AlwaysShowModelSwitch" inherits="NarciCheckButtonTemplate" parentKey="AlwaysShowModel">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_ALWAYS_SHOW_MODEL);
+                                            </OnLoad>
+                                            <OnClick function="Narci_AlwaysShowModelSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                    <Button name="Narci_FullBodySwitch" inherits="NarciCheckButtonTemplate" parentKey="FullBody">
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeKey="$parent.AlwaysShowModel" relativePoint="BOTTOM" x="0" y="-16"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2" hidden="true">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_SHOW_FULL_BODY);
+                                            </OnLoad>
+                                            <OnClick function="Narci_FullBodySwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_UseEntranceVisualSwitch" inherits="NarciCheckButtonTemplate" parentKey="Entrance">
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeKey="$parent.FullBody" relativePoint="BOTTOM" x="0" y="-32"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="140" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(Narci.L["Entrance Visual"]);
+                                                self.Description:SetText(Narci.L["Entrance Visual Description"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_EntranceVisualSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="Tab7">        <!--Photo Mode-->
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.Tab6" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.Tab6" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_PREFERENCE_GENERAL">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+
+                                        <FontString parentKey="Cate2" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_GROUP_PHOTO">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate1" relativePoint="TOPLEFT" x="0" y="-168"/>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>
+
+                                <Frames>
+                                    <Slider inherits="Narci_PreferenceSliderTemplate_Horizontal" parentKey="SceenshotQualitySlider" valueStep="1" obeyStepOnDrag="true" minValue="1" maxValue="10">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="140" y="-24"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" y="-22"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnValueChanged function="Narci_SceenshotQualitySlider_OnValueChanged"/>
+                                            <OnLoad>
+                                                self.Label:SetText(NARCI_NEW_ENTRY_PREFIX.. Narci.L["Sceenshot Quality"]); 
+                                                self.Description:SetText(Narci.L["Screenshot Quality Description"]);
+                                                NarciAPI_SliderWithSteps_OnLoad(self);
+                                            </OnLoad>
+                                            <OnShow>
+                                                self:SetValue(GetCVar("screenshotQuality") or 3);
+                                            </OnShow>
+                                        </Scripts>
+                                    </Slider>
+
+                                    <Slider name="Narci_ModelPanelScaleSlider" inherits="Narci_PreferenceSliderTemplate_Horizontal" parentKey="PanelScaleSlider" valueStep="0.1" obeyStepOnDrag="true" minValue="0.8" maxValue="1">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.SceenshotQualitySlider" relativePoint="LEFT" x="0" y="-93"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnValueChanged function="Narci_ModelPanelScaleSlider_OnValueChanged"/>
+                                            <OnLoad>
+                                                self.Label:SetText(Narci.L["Panel Scale"]); 
+                                                NarciAPI_SliderWithSteps_OnLoad(self);
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Slider>
+
+                                    <Slider name="Narci_InteractiveAreaSlider" inherits="Narci_PreferenceSliderTemplate_Horizontal" parentKey="AreaSlider" obeyStepOnDrag="true">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="140" y="-24"/>
+                                        </Anchors>
+                                        <Scripts>
+                                        </Scripts>
+                                    </Slider>
+
+                                    <Button name="Narci_ExitConfirmSwitch" inherits="NarciCheckButtonTemplate">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="18" y="-64"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(Narci.L["Exit Confirmation"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_ExitConfirmSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="CorruptionTab">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.Tab7" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.Tab7" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Preference\EyeColors" Alpha="1" hidden="false" parentKey="Preview" name="Narci_EyeColorPreview">
+                                            <TexCoords left="0" right="0.25" top="0" bottom="1"/>
+                                            <Size x="96" y="96"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate1" relativePoint="TOPLEFT" x="310" y="0"/>
+                                            </Anchors>
+                                        </Texture>
+                                        <FontString parentKey="Cate2" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate1" relativePoint="TOPLEFT" x="0" y="-118"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Preference\CorruptionBarPreview" Alpha="1" hidden="false" parentKey="Preview2">
+                                            <Size x="192" y="96"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate2" relativePoint="TOPLEFT" x="240" y="-22"/>
+                                            </Anchors>
+                                        </Texture>
+                                    </Layer>
+                                </Layers>
+                                <Frames>
+                                    <Button parentKey="CorruptionBarToggle" inherits="NarciCheckButtonTemplate" name="Narci_CorruptionBarSwitch">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="140" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.Label:SetText(Narci.L["Corruption Bar"]);
+                                                self.Description:SetText(Narci.L["Corruption Bar Description"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_CorruptionBarSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button parentKey="CorruptionTooltipToggle" inherits="NarciCheckButtonTemplate" name="Narci_CorruptionTooltipToggle">
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeKey="$parent.CorruptionBarToggle" relativePoint="BOTTOM" x="0" y="-48"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="140" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.Label:SetText(Narci.L["Corruption Debuff Tooltip"]);
+                                                self.Description:SetText(Narci.L["Corruption Debuff Tooltip Description"]);
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="CreatureTab">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.CorruptionTab" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.CorruptionTab" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="Database">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="Cate2" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="Tooltip">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate1" relativePoint="TOPLEFT" x="0" y="-81"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="Notes" inherits="NarciPrefFontCategory" justifyH="CENTER" justifyV="TOP" hidden="true" text="NARCI_REQUIRE_RELOAD">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOP" relativeKey="$parent" relativePoint="TOP" x="0" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>
+                                <Frames>
+                                    <Button name="Narci_LoadOnDemandSwitch" inherits="NarciCheckButtonTemplate" parentKey="LoadOnDemand">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(Narci.L["Load on Demand"]);
+                                                self.lockedText = Narci.L["Load on Demand Description Disabled"];
+                                                self.enabledText = Narci.L["Load on Demand Description On"];
+                                                self.disabledText = Narci.L["Load on Demand Description Off"];
+                                            </OnLoad>
+                                            <OnClick function="Narci_LoadOnDemandSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_FindRelativesSwitch" inherits="NarciCheckButtonTemplate" parentKey="FindRelatives">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate2" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Frames>
+                                            <Button parentKey="KeyBinding" inherits="NarciGenricKeyBindingButtonTemplate">
+                                                <Anchors>
+                                                    <Anchor point="LEFT" relativeKey="$parent" relativePoint="RIGHT" x="213" y="0"/>
+                                                </Anchors>
+                                                <Size x="108" y="18"/>
+                                                <Scripts>
+                                                    <OnLoad>
+                                                        self.Label:SetText(NARCI_HOTKEY);
+                                                        self.keyValue = "SearchRelativesHotkey";
+                                                        self.defaultKey = "TAB";
+                                                        self.Description:ClearAllPoints();
+                                                        self.Description:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 6);
+                                                    </OnLoad>
+                                                </Scripts>
+                                            </Button>
+                                        </Frames>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(Narci.L["Find Relatives"]);
+                                                self.Description:SetText(Narci.L["Find Related Creatures Description"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_FindRelativesSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_TranslateNameSwitch" inherits="NarciCheckButtonTemplate" parentKey="Translator">
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeKey="$parent.FindRelatives" relativePoint="BOTTOM" x="0" y="-36"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2" text="NARCI_AFK_SCREEN_DESCRIPTION">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(Narci.L["Translate Names"]);
+                                                self.enabledText = Narci.L["Translate Names Description On"];
+                                                self.disabledText = Narci.L["Translate Names Description Off"];
+                                            </OnLoad>
+                                            <OnClick function="Narci_TranslatorSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button inherits="NarciCheckButtonTemplate" parentKey="OnTooltip" id="1">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeKey="$parent.Translator.Description" relativePoint="BOTTOMLEFT" x="1" y="-11.2"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(Narci.L["Tooltip"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_TranslationPositionButton_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                    
+                                    <Button inherits="NarciCheckButtonTemplate" parentKey="OnNamePlate" id="2">
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeKey="$parent.OnTooltip" relativePoint="BOTTOM" x="0" y="-16"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(Narci.L["Name Plate"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_TranslationPositionButton_OnClick"/>
+                                        </Scripts>
+                                        
+
+                                        <Frames>
+                                            <Button inherits="NarciBindingButtonTemplate" parentKey="OffsetSetting">
+                                                <Anchors>
+                                                    <Anchor point="LEFT" relativeKey="$parent" relativePoint="RIGHT" x="190" y="0"/>
+                                                </Anchors>
+                                                <Size x="72" y="18"/>
+                                                <Frames>
+                                                    <EditBox parentKey="EditBox" autoFocus="false" multiLine="false" numeric="false" hidden="true">
+                                                        <Size x="72" y="18"/>
+                                                        <Anchors>
+                                                            <Anchor point="LEFT" relativeKey="$parent" relativePoint="LEFT"/>
+                                                            <Anchor point="RIGHT" relativeKey="$parent" relativePoint="RIGHT"/>
+                                                        </Anchors>
+                                                        <FontString inherits="NarciPrefFontWhiteLabel" justifyH="CENTER" justifyV="TOP"/>
+                                                        <Scripts>
+                                                            <OnLoad>
+                                                                self:SetTextColor(0, 0, 0);
+                                                                self:SetShadowColor(1, 1, 1);
+                                                                self:SetShadowOffset(0.6, -0.6);
+                                                            </OnLoad>
+                                                            <OnEscapePressed>
+                                                                self:HighlightText(0, 0);
+                                                                self:ClearFocus();
+                                                            </OnEscapePressed>
+                                                            <OnEditFocusLost>
+                                                                self:Hide();
+                                                            </OnEditFocusLost>
+                                                        </Scripts>
+                                                    </EditBox>
+                                                </Frames>
+                                                <Scripts>
+
+                                                </Scripts>
+                                            </Button>
+                                        </Frames>
+                                    </Button>
+
+                                    <Button inherits="NarciCheckButtonTemplate" parentKey="SelectLanguage">
+                                        <Anchors>
+                                            <Anchor point="TOP" relativeKey="$parent.OnNamePlate" relativePoint="BOTTOM" x="0" y="-48"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="BOTTOMLEFT" relativeKey="$parent.Label" relativePoint="TOPLEFT" x="-17" y="4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.singular = Narci.L["Select A Language"];
+                                                self.plural = Narci.L["Select Multiple Languages"];
+                                            </OnLoad>
+                                            <OnClick function="Narci_SelectLanguage_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+
+                                <Layers>
+                                    <Layer level="ARTWORK">
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Preference\TranslatedNamePosition" hidden="true" parentKey="Jaina">
+                                            <TexCoords left="0.5" right="1" top="0" bottom="1"/>
+                                            <Size x="128" y="128"/>
+                                            <Anchors>
+                                                <Anchor point="BOTTOMRIGHT" relativeKey="$parent" relativePoint="BOTTOMRIGHT" x="-38" y="38"/>
+                                            </Anchors>
+                                        </Texture>
+                                    </Layer>
+                                    <Layer level="OVERLAY">
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Preference\TranslatedNamePosition" hidden="true" parentKey="Preview">
+                                            <TexCoords left="0" right="0.5" top="0" bottom="0.5"/>
+                                            <Size x="128" y="64"/>
+                                            <Anchors>
+                                                <Anchor point="CENTER" relativeKey="$parent.Jaina" relativePoint="CENTER" x="0" y="0"/>
+                                            </Anchors>
+                                        </Texture>
+                                    </Layer>
+                                </Layers>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="ExtensionTab">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.CreatureTab" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.CreatureTab" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_EXTENSIONS">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>                           
+                                <Frames>
+                                    <Button name="Narci_AFKScreenSwitch" inherits="NarciCheckButtonTemplate" parentKey="AFK">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="18" y="-24"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2" text="NARCI_AFK_SCREEN_DESCRIPTION">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(Narci.L["AFK Screen"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_AFKScreenSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_AFKAutoStandSwitch" inherits="NarciCheckButtonTemplate" parentKey="AutoStand">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeKey="$parent.AFK.Description" relativePoint="BOTTOMLEFT" x="1" y="-11.2"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="190" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_NEW_ENTRY_PREFIX.. Narci.L["Keep Standing"]);
+                                                self.Description:SetText(Narci.L["Keep Standing Description"]);
+                                            </OnLoad>
+                                            <OnClick function="Narci_AFKAutoStand_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+
+                                    <Button name="Narci_GemManagerSwitch" inherits="NarciCheckButtonTemplate" parentKey="Gemma">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeKey="$parent.AFK" relativePoint="BOTTOMLEFT" x="0" y="-124"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2" text="NARCI_GEMMY_DESCRIPTION">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_GEMMA);
+                                            </OnLoad>
+                                            <OnClick function="Narci_GemManagerSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                    <Button name="Narci_DressingRoomSwitch" inherits="NarciCheckButtonTemplate">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeKey="$parent.Gemma" relativePoint="BOTTOMLEFT" x="0" y="-50"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2" text="NARCI_DRESSING_ROOM_DESCRIPTION">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" x="0" y="-4"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.IsOn = false;
+                                                self.Label:SetText(NARCI_DRESSING_ROOM)
+                                            </OnLoad>
+                                            <OnClick function="Narci_DressingRoomSwitch_OnClick"/>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="UltraWideSettings">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.ExtensionTab" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.ExtensionTab" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="CENTER" justifyV="TOP">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>
+                                <Frames>
+                                    <Slider name="Narci_MoveBaselineSlider" inherits="Narci_PreferenceSliderTemplate_Horizontal" parentKey="MoveBaselineSlider">
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeKey="$parent.Cate1" relativePoint="LEFT" x="140" y="-24"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer level="OVERLAY">
+                                                <FontString inherits="NarciNonInteractiveFont" justifyH="LEFT" justifyV="TOP" parentKey="Description" ignoreParentScale="true" Alpha="1" spacing="2">
+                                                    <Size x="270" y="0"/>
+                                                    <Anchors>
+                                                        <Anchor point="TOPLEFT" relativeKey="$parent.Label" relativePoint="BOTTOMLEFT" y="-22"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnValueChanged function="Narci_ModelPanelScaleSlider_OnValueChanged"/>
+                                        </Scripts>
+                                    </Slider>
+                                </Frames>
+                            </Frame>
+
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="CreditTab" name="Narci_CreditList">    <!--Credits-->
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.UltraWideSettings" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.UltraWideSettings" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="CENTER" justifyV="TOP" text="Patrons">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOP" relativeKey="$parent" relativePoint="TOP" x="0" y="-20"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="PatronListLeft" inherits="NarciPrefFontWhiteMild" justifyH="LEFT" justifyV="TOP" spacing="2">
+                                            <Size x="140" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOP" relativeKey="$parent.Cate1" relativePoint="BOTTOM" y="-16"/>
+                                                <Anchor point="LEFT" relativeKey="$parent" relativePoint="LEFT" x="28"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="PatronListMid" inherits="NarciPrefFontWhiteMild" justifyH="LEFT" justifyV="TOP" spacing="2">
+                                            <Size x="140" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.PatronListLeft" relativePoint="TOPRIGHT" x="20"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="PatronListRight" inherits="NarciPrefFontWhiteMild" justifyH="LEFT" justifyV="TOP" spacing="2">
+                                            <Size x="140" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.PatronListMid" relativePoint="TOPRIGHT" x="20"/>
+                                            </Anchors>
+                                        </FontString>                                   
+                                        <FontString parentKey="Cate2" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="Data Support">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="CENTER" relativeKey="$parent" relativePoint="BOTTOM" y="100"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="WebsiteList" inherits="NarciPrefFontWhiteMild" justifyH="LEFT" justifyV="TOP" text="NARCI_CREDITS_EXTRA" spacing="2">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOP" relativeKey="$parent.Cate2" relativePoint="BOTTOM" y="-16"/>
+                                                <Anchor point="LEFT" relativeKey="$parent" relativePoint="LEFT" x="28"/>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>
+                                <Animations>
+                                    <AnimationGroup parentKey="Timer">
+                                        <Translation duration="3" order="1"/>
+                                        <Scripts>
+                                            <OnFinished function="Narci_CreditList_OnFinished"/>
+                                        </Scripts>
+                                    </AnimationGroup>
+                                </Animations>
+                                <Scripts>
+                                    <OnHide>
+                                        self:StopAnimating();
+                                    </OnHide>
+                                </Scripts>
+                            </Frame>
+                            
+                            <Frame inherits="Narci_Preference_TabTemplate" parentKey="Tab10">
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeKey="$parent.CreditTab" relativePoint="BOTTOMLEFT"/>
+                                    <Anchor point="TOPRIGHT" relativeKey="$parent.CreditTab" relativePoint="BOTTOMRIGHT"/>
+                                </Anchors>
+                                <Layers>
+                                    <Layer>
+                                        <FontString inherits="NarciPrefFontWhiteMild" justifyH="LEFT" justifyV="TOP" parentKey="Text1" text="NARCI_PROJECT_DETAILS" spacing="2">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="28" y="-20"/>
+                                                <Anchor point="RIGHT" relativeKey="$parent" relativePoint="RIGHT" x="-24"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Logos\Twitter" parentKey="Twitter" Alpha="0.72">
+                                            <Size x="20" y="20"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Text1" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+                                            </Anchors>
+                                        </Texture>
+                                        <FontString inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="MIDDLE" text="@Peterodox">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="LEFT" relativeKey="$parent.Twitter" relativePoint="RIGHT" x="8" y="0"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Logos\reddit-64" parentKey="reddit" Alpha="0.72">
+                                            <Size x="20" y="20"/>
+                                            <Anchors>
+                                                <Anchor point="TOP" relativeKey="$parent.Twitter" relativePoint="TOP"/>
+                                                <Anchor point="LEFT" relativeKey="$parent" relativePoint="CENTER"/>
+                                            </Anchors>
+                                        </Texture>
+                                        <FontString inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="MIDDLE" text="u/Peterodox">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="LEFT" relativeKey="$parent.reddit" relativePoint="RIGHT" x="8" y="0"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString parentKey="Cate1" inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_ALL_PROJECTS">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Twitter" relativePoint="BOTTOMLEFT" x="0" y="-42"/>
+                                            </Anchors>
+                                        </FontString>
+
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Logos\AAA" parentKey="AAA" Alpha="0.72">
+                                            <Size x="48" y="48"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Cate1" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+                                            </Anchors>
+                                        </Texture>
+                                        <FontString inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_PROJECT_AAA_TITLE" parentKey="P1">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.AAA" relativePoint="TOPRIGHT" x="8" y="0"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString inherits="NarciPrefFontWhiteMild" justifyH="LEFT" justifyV="TOP" text="NARCI_PROJECT_AAA_SUMMARY" spacing="2">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.P1" relativePoint="BOTTOMLEFT" x="0" y="-6"/>
+                                                <Anchor point="RIGHT" relativeKey="$parent" relativePoint="RIGHT" x="-24"/>
+                                            </Anchors>
+                                        </FontString>
+
+                                        <Texture file="Interface\AddOns\Narcissus\Art\Logos\Narcissus" parentKey="Narcissus" Alpha="0.72">
+                                            <Size x="48" y="48"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.AAA" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+                                            </Anchors>
+                                        </Texture>
+                                        <FontString inherits="NarciPrefFontCategory" justifyH="LEFT" justifyV="TOP" text="NARCI_GRADIENT" parentKey="P2">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.Narcissus" relativePoint="TOPRIGHT" x="8" y="0"/>
+                                            </Anchors>
+                                        </FontString>
+                                        <FontString inherits="NarciPrefFontWhiteMild" justifyH="LEFT" justifyV="TOP" text="NARCI_PROJECT_NARCISSUS_SUMMARY" spacing="2">
+                                            <Size x="0" y="0"/>
+                                            <Anchors>
+                                                <Anchor point="TOPLEFT" relativeKey="$parent.P2" relativePoint="BOTTOMLEFT" x="0" y="-6"/>
+                                                <Anchor point="RIGHT" relativeKey="$parent" relativePoint="RIGHT" x="-24"/>
+                                            </Anchors>
+                                        </FontString>
+                                    </Layer>
+                                </Layers>
+                                <Frames>
+                                    <Button parentKey="OpenSplash">
+                                        <Size x="120" y="24"/>
+                                        <Anchors>
+                                            <Anchor point="TOPRIGHT" relativeKey="$parent" relativePoint="TOPRIGHT" x="0" y="-20"/>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString inherits="NarciPrefFontWhiteMild" justifyH="RIGHT" justifyV="TOP" parentKey="Text">
+                                                    <Size x="120" y="24"/>
+                                                    <Color r="0.25" g="0.78" b="0.92"/>
+                                                    <Anchors>
+                                                        <Anchor point="RIGHT" relativeKey="$parent" relativePoint="RIGHT" x="-24"/>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                        <Scripts>
+                                            <OnLoad>
+                                                self.Text:SetText(Narci.L["Show Whats New"]);
+                                            </OnLoad>
+                                            <OnEnter>
+                                                self.Text:SetTextColor(0.88, 0.88, 0.88);
+                                            </OnEnter>
+                                            <OnLeave>
+                                                self.Text:SetTextColor(0.24, 0.78, 0.92);
+                                            </OnLeave>
+                                            <OnClick>
+                                                Narci:ShowSplash();
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame> 
+                        </Frames>
+
+                        <Scripts>
+                            <OnLoad>
+                                self:SetWidth( math.floor(self:GetParent():GetWidth()) )
+                            </OnLoad>
+                        </Scripts>
+                    </Frame>
+                </ScrollChild>
+                <Layers>
+                    <Layer level="OVERLAY" textureSubLevel="3">
+                        <Texture setAllPoints="true">
+                            <Color r="1.0" g="1.0" b="1.0" a="0.0"/>
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <Slider name="Narci_Preference_ScrollBar" valueStep="0.01" parentKey="scrollBar" frameLevel="10">
+                        <Size x="0" y="0"/>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="0" y="0"/>
+                            <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRLEFT" x="0" y="0"/>
+                        </Anchors>
+                        <ThumbTexture setAllPoints="true" parentKey="thumbTexture" Alpha="1">
+                            <Size x="5" y="40"/>
+                            <Color r="0.1" g="0.1" b="0.1" a="1"/>
+                        </ThumbTexture>
+                        <Scripts>
+                            <OnEnter>
+
+                            </OnEnter>
+                            <OnLeave>
+
+                            </OnLeave>
+                            <OnShow>
+                                self:SetValueStep(0.01)
+                            </OnShow>
+                        </Scripts>
+                    </Slider>
+                </Frames>
+                <Scripts>
+                    <OnLoad function="Narci_Preference_ScrollFrame_OnLoad"/>
+                </Scripts>
+            </ScrollFrame>
+
+            <Frame name="$parent_TabButtonFrame" parentKey="TabButtonFrame">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPLEFT" x="0" y="0"/>
+                    <Anchor point="BOTTOMRIGHT" relativeKey="$parent.ListScrollFrame" relativePoint="BOTTOMLEFT" x="0" y="0"/>
+                </Anchors>
+            </Frame>
+
+            <Frame name="$parent_OverlayFrame" frameLevel="20">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.TabButtonFrame" relativePoint="TOPLEFT" x="0" y="0"/>
+                    <Anchor point="BOTTOMRIGHT" relativeKey="$parent.TabButtonFrame" relativePoint="BOTTOMRIGHT" x="0" y="0"/>
+                </Anchors>
+                <Layers>
+                    <Layer level="OVERLAY">
+                        <Texture inherits="NarciTopLeftShadowNoneAnchorTemplate">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" relativeKey="$parent" relativePoint="TOPRIGHT" x="-8" y="0"/>
+                                <Anchor point="BOTTOMLEFT" relativeKey="$parent" relativePoint="BOTTOMRIGHT" x="0" y="0"/>
+                            </Anchors>
+                        </Texture>
+                    </Layer>
+                </Layers>
+            </Frame>
+        </Frames>
+        <Scripts>
+			<OnLoad>
+				Narci_Preference_OnLoad(self);
+			</OnLoad>
+            <OnShow>
+                --DoEmote("Read", "none");
+                Narci_PreferenceButton:LockHighlight();
+            </OnShow>
+            <OnHide>
+                --DoEmote("Read", "none");
+                self:Hide();
+                self:SetAlpha(0);
+                Narci_PreferenceButton:UnlockHighlight();
+            </OnHide>
+            <OnMouseWheel>
+                return;
+            </OnMouseWheel>
+        </Scripts>
+    </Frame>
+</Ui>
