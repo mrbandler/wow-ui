@@ -1,0 +1,10 @@
+## Interface: 80300
+## Title: PetTracker Config
+## Notes: Load on demand options and tutorials.
+## Author: Jaliborc (João Cardoso)
+## X-Category: Battle Pets
+
+## Dependencies: PetTracker
+## LoadOnDemand: 1
+
+..\PetTracker\addons\config\config.xml

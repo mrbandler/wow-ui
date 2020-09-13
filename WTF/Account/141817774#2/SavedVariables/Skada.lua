@@ -5,6 +5,7 @@ SkadaDB = {
 		},
 	},
 	["profileKeys"] = {
+		["Nevaar - Thrall"] = "RealUI",
 		["Ischozar - Thrall"] = "RealUI",
 		["Drâon - Thrall"] = "RealUI",
 	},
@@ -104,26 +105,19 @@ SkadaDB = {
 						["g"] = 0.3,
 						["r"] = 0.3,
 					},
-					["barfontsize"] = 13,
 					["returnaftercombat"] = false,
+					["barfontsize"] = 13,
 					["version"] = 1,
 					["showself"] = true,
 					["enabletitle"] = true,
 					["roleicons"] = false,
 					["barorientation"] = 1,
-					["snapto"] = true,
+					["mode"] = "Threat",
 					["scale"] = 1,
 					["modeincombat"] = "",
 					["smoothing"] = false,
-					["textcolor"] = {
-						["b"] = 0.9,
-						["g"] = 0.9,
-						["r"] = 0.9,
-					},
+					["fixedbarwidth"] = false,
 					["reversegrowth"] = false,
-					["bartexture"] = "Plain",
-					["barwidth"] = 227.99983215332,
-					["barspacing"] = 0,
 					["buttons"] = {
 						["report"] = true,
 						["menu"] = true,
@@ -131,10 +125,17 @@ SkadaDB = {
 						["segment"] = false,
 						["reset"] = false,
 					},
+					["barwidth"] = 227.99983215332,
+					["barspacing"] = 0,
+					["bartexture"] = "Plain",
 					["width"] = 600,
-					["fixedbarwidth"] = false,
+					["textcolor"] = {
+						["b"] = 0.9,
+						["g"] = 0.9,
+						["r"] = 0.9,
+					},
 					["isonnewline"] = false,
-					["mode"] = "Threat",
+					["snapto"] = true,
 					["classcolorbars"] = true,
 					["isusingclasscolors"] = true,
 					["classcolortext"] = false,
@@ -146,7 +147,6 @@ SkadaDB = {
 				{
 					["classicons"] = false,
 					["barslocked"] = true,
-					["hidden"] = true,
 					["y"] = 29.99986267089844,
 					["x"] = -4,
 					["title"] = {
@@ -160,6 +160,7 @@ SkadaDB = {
 						["texture"] = "Plain",
 					},
 					["barfontflags"] = "OUTLINE",
+					["point"] = "BOTTOMRIGHT",
 					["background"] = {
 						["height"] = 180,
 						["color"] = {
@@ -169,14 +170,13 @@ SkadaDB = {
 						["tilesize"] = 10,
 						["texture"] = "Plain",
 					},
-					["point"] = "BOTTOMRIGHT",
 					["mode"] = "Damage",
+					["bartexture"] = "Plain",
+					["barwidth"] = 227.99983215332,
 					["buttons"] = {
 						["segment"] = false,
 						["reset"] = false,
 					},
-					["barwidth"] = 227.99983215332,
-					["bartexture"] = "Plain",
 					["barfont"] = "Roboto",
 				}, -- [1]
 			},
@@ -196,7 +196,7 @@ SkadaDB = {
 		["Default"] = {
 			["windows"] = {
 				{
-					["y"] = 0.00018310546875,
+					["y"] = 0.0004425048828125,
 					["x"] = 3.0517578125e-05,
 					["point"] = "CENTER",
 				}, -- [1]

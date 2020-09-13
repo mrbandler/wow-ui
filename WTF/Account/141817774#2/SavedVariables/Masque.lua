@@ -5,6 +5,7 @@ MasqueDB = {
 		},
 	},
 	["profileKeys"] = {
+		["Nevaar - Thrall"] = "RealUI",
 		["Ischozar - Thrall"] = "RealUI",
 		["Drâon - Thrall"] = "RealUI",
 	},

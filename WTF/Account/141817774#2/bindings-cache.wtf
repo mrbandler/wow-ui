@@ -17,6 +17,8 @@ bind 9 CLICK BT4Button9:LeftButton
 bind 0 CLICK BT4Button10:LeftButton
 bind - CLICK BT4Button11:LeftButton
 bind = CLICK BT4Button12:LeftButton
+bind F CLICK BT4Button16:LeftButton
+bind V CLICK BT4Button17:LeftButton
 bind CTRL-S NONE
 bind CTRL-W NONE
 bind BUTTON5 Toggle Chat (Right)

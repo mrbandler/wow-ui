@@ -1,0 +1,12 @@
+## Interface: 80300
+## Title: PetTracker Journal
+## Notes: Load on demand modification for the Pet Journal.
+## Author: Jaliborc (João Cardoso)
+## X-Category: Battle Pets
+
+## Dependencies: PetTracker
+## RequiredDep: Blizzard_MapCanvas
+## LoadWith: Blizzard_Collections
+## LoadOnDemand: 1
+
+..\PetTracker\addons\journal\journal.xml

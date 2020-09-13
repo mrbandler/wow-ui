@@ -2,8 +2,21 @@ BINDINGMODE 0
 bind BUTTON3 NONE
 bind A STRAFELEFT
 bind D STRAFERIGHT
-bind Q TURNLEFT
-bind E TURNRIGHT
+bind Q CLICK BT4Button13:LeftButton
+bind E CLICK BT4Button14:LeftButton
+bind R CLICK BT4Button15:LeftButton
+bind 1 CLICK BT4Button1:LeftButton
+bind 2 CLICK BT4Button2:LeftButton
+bind 3 CLICK BT4Button3:LeftButton
+bind 4 CLICK BT4Button4:LeftButton
+bind 5 CLICK BT4Button5:LeftButton
+bind 6 CLICK BT4Button6:LeftButton
+bind 7 CLICK BT4Button7:LeftButton
+bind 8 CLICK BT4Button8:LeftButton
+bind 9 CLICK BT4Button9:LeftButton
+bind 0 CLICK BT4Button10:LeftButton
+bind - CLICK BT4Button11:LeftButton
+bind = CLICK BT4Button12:LeftButton
 bind CTRL-S NONE
 bind CTRL-W NONE
 bind BUTTON5 Toggle Chat (Right)

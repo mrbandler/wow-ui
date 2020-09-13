@@ -1,0 +1,2 @@
+
+nibRealUICharacter = nil

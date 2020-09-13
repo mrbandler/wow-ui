@@ -1,6 +1,7 @@
 
 RealUI_SkinsDB = {
 	["profileKeys"] = {
+		["Nevaar - Thrall"] = "Default",
 		["Ischozar - Thrall"] = "Default",
 		["Drâon - Thrall"] = "Default",
 	},

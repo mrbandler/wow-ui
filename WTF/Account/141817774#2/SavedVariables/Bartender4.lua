@@ -3,6 +3,16 @@ Bartender4DB = {
 	["namespaces"] = {
 		["StatusTrackingBar"] = {
 			["profiles"] = {
+				["Nevaar - Thrall"] = {
+					["enabled"] = true,
+					["version"] = 3,
+					["position"] = {
+						["scale"] = 1.264999985694885,
+						["x"] = -515,
+						["point"] = "BOTTOM",
+						["y"] = 62,
+					},
+				},
 				["Ischozar - Thrall"] = {
 					["enabled"] = true,
 					["version"] = 3,
@@ -27,13 +37,163 @@ Bartender4DB = {
 		},
 		["ActionBars"] = {
 			["profiles"] = {
+				["Nevaar - Thrall"] = {
+					["actionbars"] = {
+						{
+							["padding"] = 6,
+							["version"] = 3,
+							["position"] = {
+								["y"] = 41.75,
+								["x"] = -510,
+								["point"] = "BOTTOM",
+							},
+						}, -- [1]
+						{
+							["enabled"] = false,
+							["version"] = 3,
+							["position"] = {
+								["y"] = -227.4998474121094,
+								["x"] = -231.5001831054688,
+								["point"] = "CENTER",
+							},
+						}, -- [2]
+						{
+							["rows"] = 12,
+							["padding"] = 5,
+							["version"] = 3,
+							["position"] = {
+								["y"] = 610,
+								["x"] = -82,
+								["point"] = "BOTTOMRIGHT",
+							},
+						}, -- [3]
+						{
+							["rows"] = 12,
+							["padding"] = 5,
+							["version"] = 3,
+							["position"] = {
+								["y"] = 610,
+								["x"] = -42,
+								["point"] = "BOTTOMRIGHT",
+							},
+						}, -- [4]
+						{
+							["padding"] = 6,
+							["version"] = 3,
+							["position"] = {
+								["y"] = 110,
+								["x"] = 3,
+								["point"] = "BOTTOM",
+							},
+						}, -- [5]
+						{
+							["padding"] = 6,
+							["version"] = 3,
+							["position"] = {
+								["y"] = 110,
+								["x"] = -510,
+								["point"] = "BOTTOM",
+							},
+						}, -- [6]
+						{
+						}, -- [7]
+						{
+						}, -- [8]
+						[10] = {
+						},
+					},
+				},
+				["RealUI-Healing"] = {
+					["actionbars"] = {
+						{
+							["version"] = 3,
+							["position"] = {
+								["y"] = -199.5,
+								["x"] = -171.5,
+								["point"] = "CENTER",
+							},
+							["hidemacrotext"] = true,
+							["padding"] = -9,
+							["visibility"] = {
+								["custom"] = true,
+								["customdata"] = "[mod:ctrl][@focus,exists][harm,nodead][combat][group:party][group:raid][vehicleui]][overridebar][cursor]show;hide",
+							},
+							["flyoutDirection"] = "DOWN",
+						}, -- [1]
+						{
+							["version"] = 3,
+							["position"] = {
+								["y"] = 89,
+								["x"] = -171.5,
+								["point"] = "BOTTOM",
+							},
+							["padding"] = -9,
+							["visibility"] = {
+								["custom"] = true,
+								["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl][@focus,exists][harm,nodead][combat][group:party][group:raid][vehicleui][cursor]show;hide",
+							},
+							["hidemacrotext"] = true,
+						}, -- [2]
+						{
+							["version"] = 3,
+							["position"] = {
+								["y"] = 62,
+								["x"] = -171.5,
+								["point"] = "BOTTOM",
+							},
+							["padding"] = -9,
+							["visibility"] = {
+								["custom"] = true,
+								["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl][@focus,exists][harm,nodead][combat][group:party][group:raid][vehicleui][cursor]show;hide",
+							},
+							["hidemacrotext"] = true,
+						}, -- [3]
+						{
+							["version"] = 3,
+							["rows"] = 12,
+							["fadeoutalpha"] = 0,
+							["position"] = {
+								["y"] = 334.5,
+								["x"] = -36,
+								["point"] = "RIGHT",
+							},
+							["hidemacrotext"] = true,
+							["padding"] = -9,
+							["visibility"] = {
+								["custom"] = true,
+								["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl][cursor]show;fade",
+							},
+							["flyoutDirection"] = "LEFT",
+						}, -- [4]
+						{
+							["version"] = 3,
+							["rows"] = 12,
+							["fadeoutalpha"] = 0,
+							["position"] = {
+								["y"] = 10.5,
+								["x"] = -36,
+								["point"] = "RIGHT",
+							},
+							["hidemacrotext"] = true,
+							["padding"] = -9,
+							["visibility"] = {
+								["custom"] = true,
+								["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl][cursor]show;fade",
+							},
+							["flyoutDirection"] = "LEFT",
+						}, -- [5]
+						{
+							["enabled"] = false,
+						}, -- [6]
+					},
+				},
 				["RealUI"] = {
 					["actionbars"] = {
 						{
 							["flyoutDirection"] = "DOWN",
 							["version"] = 3,
 							["position"] = {
-								["y"] = -219.5,
+								["y"] = -250.5,
 								["x"] = -171.5,
 								["point"] = "CENTER",
 							},
@@ -45,14 +205,15 @@ Bartender4DB = {
 							},
 						}, -- [1]
 						{
-							["hidemacrotext"] = true,
+							["flyoutDirection"] = "DOWN",
+							["padding"] = -9,
 							["version"] = 3,
 							["position"] = {
-								["y"] = 87,
+								["y"] = -277.5,
 								["x"] = -171.5,
-								["point"] = "BOTTOM",
+								["point"] = "CENTER",
 							},
-							["padding"] = -9,
+							["hidemacrotext"] = true,
 							["visibility"] = {
 								["custom"] = true,
 								["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl][@focus,exists][harm,nodead][combat][group:party][group:raid][vehicleui][cursor]show;hide",
@@ -184,90 +345,6 @@ Bartender4DB = {
 						},
 					},
 				},
-				["RealUI-Healing"] = {
-					["actionbars"] = {
-						{
-							["version"] = 3,
-							["position"] = {
-								["y"] = -199.5,
-								["x"] = -171.5,
-								["point"] = "CENTER",
-							},
-							["padding"] = -9,
-							["hidemacrotext"] = true,
-							["visibility"] = {
-								["custom"] = true,
-								["customdata"] = "[mod:ctrl][@focus,exists][harm,nodead][combat][group:party][group:raid][vehicleui]][overridebar][cursor]show;hide",
-							},
-							["flyoutDirection"] = "DOWN",
-						}, -- [1]
-						{
-							["version"] = 3,
-							["position"] = {
-								["y"] = 89,
-								["x"] = -171.5,
-								["point"] = "BOTTOM",
-							},
-							["padding"] = -9,
-							["visibility"] = {
-								["custom"] = true,
-								["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl][@focus,exists][harm,nodead][combat][group:party][group:raid][vehicleui][cursor]show;hide",
-							},
-							["hidemacrotext"] = true,
-						}, -- [2]
-						{
-							["version"] = 3,
-							["position"] = {
-								["y"] = 62,
-								["x"] = -171.5,
-								["point"] = "BOTTOM",
-							},
-							["padding"] = -9,
-							["visibility"] = {
-								["custom"] = true,
-								["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl][@focus,exists][harm,nodead][combat][group:party][group:raid][vehicleui][cursor]show;hide",
-							},
-							["hidemacrotext"] = true,
-						}, -- [3]
-						{
-							["version"] = 3,
-							["rows"] = 12,
-							["fadeoutalpha"] = 0,
-							["position"] = {
-								["y"] = 334.5,
-								["x"] = -36,
-								["point"] = "RIGHT",
-							},
-							["hidemacrotext"] = true,
-							["padding"] = -9,
-							["visibility"] = {
-								["custom"] = true,
-								["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl][cursor]show;fade",
-							},
-							["flyoutDirection"] = "LEFT",
-						}, -- [4]
-						{
-							["version"] = 3,
-							["rows"] = 12,
-							["fadeoutalpha"] = 0,
-							["position"] = {
-								["y"] = 10.5,
-								["x"] = -36,
-								["point"] = "RIGHT",
-							},
-							["hidemacrotext"] = true,
-							["padding"] = -9,
-							["visibility"] = {
-								["custom"] = true,
-								["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl][cursor]show;fade",
-							},
-							["flyoutDirection"] = "LEFT",
-						}, -- [5]
-						{
-							["enabled"] = false,
-						}, -- [6]
-					},
-				},
 				["Drâon - Thrall"] = {
 					["actionbars"] = {
 						{
@@ -338,6 +415,12 @@ Bartender4DB = {
 		},
 		["LibDualSpec-1.0"] = {
 			["char"] = {
+				["Nevaar - Thrall"] = {
+					"RealUI-Healing", -- [1]
+					"RealUI", -- [2]
+					"RealUI", -- [3]
+					["enabled"] = true,
+				},
 				["Ischozar - Thrall"] = {
 					"RealUI", -- [1]
 					"RealUI", -- [2]
@@ -354,6 +437,23 @@ Bartender4DB = {
 		},
 		["ExtraActionBar"] = {
 			["profiles"] = {
+				["Nevaar - Thrall"] = {
+					["version"] = 3,
+					["position"] = {
+						["y"] = 223.0000305175781,
+						["x"] = -31.50006103515625,
+						["point"] = "BOTTOM",
+					},
+				},
+				["RealUI-Healing"] = {
+					["version"] = 3,
+					["position"] = {
+						["y"] = 86,
+						["x"] = 157.5,
+						["point"] = "BOTTOM",
+						["scale"] = 0.985,
+					},
+				},
 				["RealUI"] = {
 					["position"] = {
 						["y"] = 84,
@@ -371,15 +471,6 @@ Bartender4DB = {
 						["point"] = "BOTTOM",
 					},
 				},
-				["RealUI-Healing"] = {
-					["version"] = 3,
-					["position"] = {
-						["y"] = 86,
-						["x"] = 157.5,
-						["point"] = "BOTTOM",
-						["scale"] = 0.985,
-					},
-				},
 				["Drâon - Thrall"] = {
 					["version"] = 3,
 					["position"] = {
@@ -392,6 +483,19 @@ Bartender4DB = {
 		},
 		["MicroMenu"] = {
 			["profiles"] = {
+				["Nevaar - Thrall"] = {
+					["padding"] = -2,
+					["version"] = 3,
+					["position"] = {
+						["scale"] = 1,
+						["x"] = 37.5,
+						["point"] = "BOTTOM",
+						["y"] = 41.75,
+					},
+				},
+				["RealUI-Healing"] = {
+					["enabled"] = false,
+				},
 				["RealUI"] = {
 					["enabled"] = false,
 				},
@@ -404,9 +508,6 @@ Bartender4DB = {
 						["point"] = "BOTTOM",
 						["y"] = 41.75,
 					},
-				},
-				["RealUI-Healing"] = {
-					["enabled"] = false,
 				},
 				["Drâon - Thrall"] = {
 					["padding"] = -2,
@@ -422,6 +523,17 @@ Bartender4DB = {
 		},
 		["BagBar"] = {
 			["profiles"] = {
+				["Nevaar - Thrall"] = {
+					["version"] = 3,
+					["position"] = {
+						["y"] = 38.5,
+						["x"] = 345,
+						["point"] = "BOTTOM",
+					},
+				},
+				["RealUI-Healing"] = {
+					["enabled"] = false,
+				},
 				["RealUI"] = {
 					["enabled"] = false,
 				},
@@ -432,9 +544,6 @@ Bartender4DB = {
 						["x"] = 345,
 						["point"] = "BOTTOM",
 					},
-				},
-				["RealUI-Healing"] = {
-					["enabled"] = false,
 				},
 				["Drâon - Thrall"] = {
 					["version"] = 3,
@@ -448,6 +557,15 @@ Bartender4DB = {
 		},
 		["BlizzardArt"] = {
 			["profiles"] = {
+				["Nevaar - Thrall"] = {
+					["enabled"] = true,
+					["version"] = 3,
+					["position"] = {
+						["y"] = 47,
+						["x"] = -512,
+						["point"] = "BOTTOM",
+					},
+				},
 				["Ischozar - Thrall"] = {
 					["enabled"] = true,
 					["version"] = 3,
@@ -470,6 +588,23 @@ Bartender4DB = {
 		},
 		["ZoneAbilityBar"] = {
 			["profiles"] = {
+				["Nevaar - Thrall"] = {
+					["version"] = 3,
+					["position"] = {
+						["y"] = 223.0000457763672,
+						["x"] = -31.50006103515625,
+						["point"] = "BOTTOM",
+					},
+				},
+				["RealUI-Healing"] = {
+					["version"] = 3,
+					["position"] = {
+						["y"] = 86,
+						["x"] = -157.5,
+						["point"] = "BOTTOM",
+						["scale"] = 0.985,
+					},
+				},
 				["RealUI"] = {
 					["position"] = {
 						["y"] = 84,
@@ -487,15 +622,6 @@ Bartender4DB = {
 						["point"] = "BOTTOM",
 					},
 				},
-				["RealUI-Healing"] = {
-					["version"] = 3,
-					["position"] = {
-						["y"] = 86,
-						["x"] = -157.5,
-						["point"] = "BOTTOM",
-						["scale"] = 0.985,
-					},
-				},
 				["Drâon - Thrall"] = {
 					["version"] = 3,
 					["position"] = {
@@ -506,39 +632,61 @@ Bartender4DB = {
 				},
 			},
 		},
-		["Vehicle"] = {
+		["StanceBar"] = {
 			["profiles"] = {
-				["RealUI"] = {
-					["position"] = {
-						["y"] = -59.5,
-						["x"] = -36,
-						["point"] = "TOPRIGHT",
-						["scale"] = 0.84,
-					},
-					["version"] = 3,
-				},
-				["Ischozar - Thrall"] = {
+				["Nevaar - Thrall"] = {
 					["version"] = 3,
 					["position"] = {
-						["y"] = 42.50006103515625,
-						["x"] = 104.5,
+						["y"] = -14.99996185302734,
+						["x"] = -82.5,
 						["point"] = "CENTER",
 					},
 				},
 				["RealUI-Healing"] = {
 					["version"] = 3,
 					["position"] = {
-						["y"] = -59.5,
-						["x"] = -36,
-						["point"] = "TOPRIGHT",
-						["scale"] = 0.84,
+						["y"] = 49,
+						["x"] = -157.5,
+						["point"] = "BOTTOM",
+						["scale"] = 1,
+						["growHorizontal"] = "LEFT",
+					},
+					["padding"] = -7,
+					["visibility"] = {
+						["custom"] = true,
+						["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl]show;fade",
+					},
+					["fadeoutalpha"] = 0,
+				},
+				["RealUI"] = {
+					["fadeoutalpha"] = 0,
+					["position"] = {
+						["y"] = 49,
+						["x"] = -157.5,
+						["point"] = "BOTTOM",
+						["scale"] = 1,
+						["growHorizontal"] = "LEFT",
+					},
+					["version"] = 3,
+					["padding"] = -7,
+					["visibility"] = {
+						["custom"] = true,
+						["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl]show;fade",
+					},
+				},
+				["Ischozar - Thrall"] = {
+					["version"] = 3,
+					["position"] = {
+						["y"] = -14.99996185302734,
+						["x"] = -82.5,
+						["point"] = "CENTER",
 					},
 				},
 				["Drâon - Thrall"] = {
 					["version"] = 3,
 					["position"] = {
-						["y"] = 42.50006103515625,
-						["x"] = 104.5,
+						["y"] = -14.99996185302734,
+						["x"] = -82.5,
 						["point"] = "CENTER",
 					},
 				},
@@ -546,6 +694,29 @@ Bartender4DB = {
 		},
 		["PetBar"] = {
 			["profiles"] = {
+				["Nevaar - Thrall"] = {
+					["version"] = 3,
+					["position"] = {
+						["y"] = 143,
+						["x"] = -460,
+						["point"] = "BOTTOM",
+					},
+				},
+				["RealUI-Healing"] = {
+					["version"] = 3,
+					["position"] = {
+						["y"] = 124.5,
+						["x"] = -8,
+						["point"] = "LEFT",
+					},
+					["fadeoutalpha"] = 0,
+					["rows"] = 10,
+					["visibility"] = {
+						["custom"] = true,
+						["customdata"] = "[nopet][petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl]show;fade",
+					},
+					["padding"] = -7,
+				},
 				["RealUI"] = {
 					["rows"] = 10,
 					["fadeoutalpha"] = 0,
@@ -568,21 +739,6 @@ Bartender4DB = {
 						["x"] = -460,
 						["point"] = "BOTTOM",
 					},
-				},
-				["RealUI-Healing"] = {
-					["version"] = 3,
-					["position"] = {
-						["y"] = 124.5,
-						["x"] = -8,
-						["point"] = "LEFT",
-					},
-					["fadeoutalpha"] = 0,
-					["padding"] = -7,
-					["visibility"] = {
-						["custom"] = true,
-						["customdata"] = "[nopet][petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl]show;fade",
-					},
-					["rows"] = 10,
 				},
 				["Drâon - Thrall"] = {
 					["version"] = 3,
@@ -594,53 +750,47 @@ Bartender4DB = {
 				},
 			},
 		},
-		["StanceBar"] = {
+		["Vehicle"] = {
 			["profiles"] = {
-				["RealUI"] = {
-					["fadeoutalpha"] = 0,
-					["position"] = {
-						["y"] = 49,
-						["x"] = -157.5,
-						["point"] = "BOTTOM",
-						["scale"] = 1,
-						["growHorizontal"] = "LEFT",
-					},
-					["version"] = 3,
-					["padding"] = -7,
-					["visibility"] = {
-						["custom"] = true,
-						["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl]show;fade",
-					},
-				},
-				["Ischozar - Thrall"] = {
+				["Nevaar - Thrall"] = {
 					["version"] = 3,
 					["position"] = {
-						["y"] = -14.99996185302734,
-						["x"] = -82.5,
+						["y"] = 42.50006103515625,
+						["x"] = 104.5,
 						["point"] = "CENTER",
 					},
 				},
 				["RealUI-Healing"] = {
 					["version"] = 3,
 					["position"] = {
-						["y"] = 49,
-						["x"] = -157.5,
-						["point"] = "BOTTOM",
-						["scale"] = 1,
-						["growHorizontal"] = "LEFT",
+						["y"] = -59.5,
+						["x"] = -36,
+						["point"] = "TOPRIGHT",
+						["scale"] = 0.84,
 					},
-					["padding"] = -7,
-					["visibility"] = {
-						["custom"] = true,
-						["customdata"] = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists]hide;[mod:ctrl]show;fade",
+				},
+				["RealUI"] = {
+					["position"] = {
+						["y"] = -59.5,
+						["x"] = -36,
+						["point"] = "TOPRIGHT",
+						["scale"] = 0.84,
 					},
-					["fadeoutalpha"] = 0,
+					["version"] = 3,
+				},
+				["Ischozar - Thrall"] = {
+					["version"] = 3,
+					["position"] = {
+						["y"] = 42.50006103515625,
+						["x"] = 104.5,
+						["point"] = "CENTER",
+					},
 				},
 				["Drâon - Thrall"] = {
 					["version"] = 3,
 					["position"] = {
-						["y"] = -14.99996185302734,
-						["x"] = -82.5,
+						["y"] = 42.50006103515625,
+						["x"] = 104.5,
 						["point"] = "CENTER",
 					},
 				},
@@ -648,16 +798,12 @@ Bartender4DB = {
 		},
 	},
 	["profileKeys"] = {
+		["Nevaar - Thrall"] = "RealUI",
 		["Ischozar - Thrall"] = "RealUI",
 		["Drâon - Thrall"] = "RealUI",
 	},
 	["profiles"] = {
-		["RealUI"] = {
-			["minimapIcon"] = {
-				["hide"] = true,
-			},
-		},
-		["Ischozar - Thrall"] = {
+		["Nevaar - Thrall"] = {
 			["focuscastmodifier"] = false,
 			["blizzardVehicle"] = true,
 			["outofrange"] = "hotkey",
@@ -666,6 +812,17 @@ Bartender4DB = {
 			["minimapIcon"] = {
 				["hide"] = true,
 			},
+		},
+		["RealUI"] = {
+			["minimapIcon"] = {
+				["hide"] = true,
+			},
+			["onkeydown"] = true,
+		},
+		["Ischozar - Thrall"] = {
+			["focuscastmodifier"] = false,
+			["blizzardVehicle"] = true,
+			["outofrange"] = "hotkey",
 		},
 		["Drâon - Thrall"] = {
 			["focuscastmodifier"] = false,
