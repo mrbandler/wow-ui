@@ -25,8 +25,8 @@ TomTomDB = {
 				["default_iconsize"] = 18,
 			},
 			["mapcoords"] = {
-				["playerenable"] = false,
 				["cursorenable"] = false,
+				["playerenable"] = false,
 			},
 			["block"] = {
 				["enable"] = false,

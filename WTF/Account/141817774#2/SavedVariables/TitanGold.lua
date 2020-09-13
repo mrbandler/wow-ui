@@ -8,7 +8,7 @@ GoldSave = {
 	["Ischozar_Thrall::Horde"] = {
 		["show"] = true,
 		["name"] = "Ischozar",
-		["gold"] = 51972,
+		["gold"] = 52006,
 	},
 	["Nevaar_Thrall::Alliance"] = {
 		["show"] = true,

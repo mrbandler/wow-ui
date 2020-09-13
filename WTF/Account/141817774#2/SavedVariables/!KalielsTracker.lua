@@ -1,13 +1,13 @@
 
 KalielsTrackerDB = {
-	["global"] = {
-		["helpTutorial"] = 11,
-		["version"] = "3.2.3",
-	},
 	["profileKeys"] = {
 		["Nevaar - Thrall"] = "Default",
 		["Ischozar - Thrall"] = "Default",
 		["Drâon - Thrall"] = "Default",
+	},
+	["global"] = {
+		["helpTutorial"] = 11,
+		["version"] = "3.2.3",
 	},
 	["profiles"] = {
 		["Default"] = {

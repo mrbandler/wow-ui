@@ -4,19 +4,19 @@ CliqueDB3 = {
 	["char"] = {
 		["Nevaar - Thrall"] = {
 			["spec1_profileKey"] = "Nevaar - Thrall",
-			["fastooc"] = false,
-			["downclick"] = false,
 			["alerthidden"] = true,
-			["spec3_profileKey"] = "Nevaar - Thrall",
-			["spec2_profileKey"] = "Nevaar - Thrall",
+			["downclick"] = false,
+			["fastooc"] = false,
 			["specswap"] = false,
+			["spec2_profileKey"] = "Nevaar - Thrall",
+			["spec3_profileKey"] = "Nevaar - Thrall",
 		},
 		["Ischozar - Thrall"] = {
 			["spec1_profileKey"] = "Ischozar - Thrall",
-			["specswap"] = false,
-			["downclick"] = false,
 			["fastooc"] = false,
 			["spec2_profileKey"] = "Ischozar - Thrall",
+			["downclick"] = false,
+			["specswap"] = false,
 			["spec3_profileKey"] = "Ischozar - Thrall",
 		},
 		["Drâon - Thrall"] = {
@@ -24,8 +24,8 @@ CliqueDB3 = {
 			["specswap"] = false,
 			["downclick"] = false,
 			["fastooc"] = false,
-			["spec3_profileKey"] = "Drâon - Thrall",
 			["spec2_profileKey"] = "Drâon - Thrall",
+			["spec3_profileKey"] = "Drâon - Thrall",
 		},
 	},
 	["profileKeys"] = {
@@ -37,10 +37,10 @@ CliqueDB3 = {
 		["Nevaar - Thrall"] = {
 			["bindings"] = {
 				{
+					["type"] = "target",
 					["sets"] = {
 						["default"] = true,
 					},
-					["type"] = "target",
 					["key"] = "BUTTON1",
 					["unit"] = "mouseover",
 				}, -- [1]
@@ -56,10 +56,10 @@ CliqueDB3 = {
 		["Ischozar - Thrall"] = {
 			["bindings"] = {
 				{
+					["type"] = "target",
 					["sets"] = {
 						["default"] = true,
 					},
-					["type"] = "target",
 					["key"] = "BUTTON1",
 					["unit"] = "mouseover",
 				}, -- [1]
@@ -75,10 +75,10 @@ CliqueDB3 = {
 		["Drâon - Thrall"] = {
 			["bindings"] = {
 				{
-					["type"] = "target",
 					["sets"] = {
 						["default"] = true,
 					},
+					["type"] = "target",
 					["key"] = "BUTTON1",
 					["unit"] = "mouseover",
 				}, -- [1]

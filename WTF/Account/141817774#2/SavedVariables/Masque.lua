@@ -27,7 +27,7 @@ MasqueDB = {
 				["Bartender4_1"] = {
 					["Inherit"] = false,
 				},
-				["Bartender4_BagBar"] = {
+				["Bartender4_6"] = {
 					["Inherit"] = false,
 				},
 				["Bartender4_PetBar"] = {
@@ -36,7 +36,7 @@ MasqueDB = {
 				["Bartender4_3"] = {
 					["Inherit"] = false,
 				},
-				["Bartender4"] = {
+				["Kaliel's Tracker"] = {
 					["Inherit"] = false,
 				},
 				["Kaliel's Tracker_Quest Item Button"] = {
@@ -45,10 +45,10 @@ MasqueDB = {
 				["Bartender4_2"] = {
 					["Inherit"] = false,
 				},
-				["Kaliel's Tracker"] = {
+				["Bartender4"] = {
 					["Inherit"] = false,
 				},
-				["Bartender4_6"] = {
+				["Bartender4_BagBar"] = {
 					["Inherit"] = false,
 				},
 			},
@@ -130,17 +130,17 @@ MasqueDB = {
 					["Backdrop"] = true,
 					["SkinID"] = "RealUI",
 				},
-				["Bartender4_6"] = {
-					["Inherit"] = false,
-					["Backdrop"] = true,
+				["Masque"] = {
+					["Fonts"] = true,
 					["SkinID"] = "RealUI",
+					["Backdrop"] = true,
 				},
 				["Bartender4_PetBar"] = {
 					["Inherit"] = false,
 					["Backdrop"] = true,
 					["SkinID"] = "RealUI",
 				},
-				["Raven_PlayerDebuffs"] = {
+				["Kaliel's Tracker"] = {
 					["Inherit"] = false,
 					["Backdrop"] = true,
 					["SkinID"] = "RealUI",
@@ -160,15 +160,15 @@ MasqueDB = {
 					["Backdrop"] = true,
 					["SkinID"] = "RealUI",
 				},
-				["Kaliel's Tracker"] = {
+				["Raven_PlayerDebuffs"] = {
 					["Inherit"] = false,
 					["Backdrop"] = true,
 					["SkinID"] = "RealUI",
 				},
-				["Masque"] = {
-					["Fonts"] = true,
-					["SkinID"] = "RealUI",
+				["Bartender4_6"] = {
+					["Inherit"] = false,
 					["Backdrop"] = true,
+					["SkinID"] = "RealUI",
 				},
 			},
 		},
