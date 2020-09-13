@@ -10,11 +10,11 @@
 2. [Screenshots](#2-screenshots) 📺
 3. [License](#3-license) 📃
 
-> ⚠️ The respository currently holds configurations for my specific characters, I am working on removing them from the repo for better compatability.
+> ⚠️ The respository currently holds configurations for my specific characters, I am working on removing them from the repo for better compatibility.
 
 ## 1. Installation
 
-> ℹ️ For the easiest usage experiences it is recommeded to clone the repository you World of Warcraft installation directory.
+> ℹ️ For the easiest installation experience it is recommended to clone the repository in your World of Warcraft installation directory.
 
 ```powershell
 > git clone https://github.com/mrbandler/wow-ui.git
@@ -24,7 +24,7 @@ OR
 > git clone git@github.com:mrbandler/wow-ui.git
 ```
 
-After the cloning process is finished move into the cloned respositories directory and execute the following command:
+After the cloning process is finished move into the cloned repository directory and execute the following command:
 
 ```powershell
 > ./install.ps1
@@ -36,16 +36,29 @@ After the cloning process is finished move into the cloned respositories directo
 > ./install.ps1 -addons "C:\ProgramFiles(x86)\WorldofWarcraft\_retail_\Interface\AddOns" -wtf "C:\ProgramFiles(x86)\WorldofWarcraft\_retail_\WTF"
 ```
 
-Don't worry the script is non-distructive, it creates a backup of you current configurations and addons to move back to your previous UI.
+Don't worry the script is non-distructive, it creates a backup of you current configurations and addons to easily move back to your previous UI.
 
 ## 2. Screenshots
 
+Out of combat
 ![Out of combat](https://github.com/mrbandler/wow-ui/blob/master/screenshots/out-of-combat.png)
+
+Character and bag
 ![Character and bag](https://github.com/mrbandler/wow-ui/blob/master/screenshots/character-and-bag.png)
+
+Worldmap
 ![Worldmap](https://github.com/mrbandler/wow-ui/blob/master/screenshots/worldmap.png)
+
+Target selected
 ![Target selected](https://github.com/mrbandler/wow-ui/blob/master/screenshots/target-selected.png)
+
+Combat
 ![Combat](https://github.com/mrbandler/wow-ui/blob/master/screenshots/combat.png)
+
+NPC Interaction
 ![NPC Interaction](https://github.com/mrbandler/wow-ui/blob/master/screenshots/npc-interaction.png)
+
+Character overview
 ![Character overview](https://github.com/mrbandler/wow-ui/blob/master/screenshots/character-overview.png)
 
 ---
