@@ -44,22 +44,28 @@ Don't worry the script is non-distructive, it creates a backup of you current co
 
 ![Out of combat](https://github.com/mrbandler/wow-ui/blob/master/screenshots/out-of-combat.png)
 
-Character and bag
+<p align="center"><strong>Character and bag</strong></p>
+
 ![Character and bag](https://github.com/mrbandler/wow-ui/blob/master/screenshots/character-and-bag.png)
 
-Worldmap
+<p align="center"><strong>Worldmap</strong></p>
+
 ![Worldmap](https://github.com/mrbandler/wow-ui/blob/master/screenshots/worldmap.png)
 
-Target selected
+<p align="center"><strong>Target selected</strong></p>
+
 ![Target selected](https://github.com/mrbandler/wow-ui/blob/master/screenshots/target-selected.png)
 
-Combat
+<p align="center"><strong>Combat</strong></p>
+
 ![Combat](https://github.com/mrbandler/wow-ui/blob/master/screenshots/combat.png)
 
-NPC Interaction
+<p align="center"><strong>NPC Interaction</strong></p>
+
 ![NPC Interaction](https://github.com/mrbandler/wow-ui/blob/master/screenshots/npc-interaction.png)
 
-Character overview
+<p align="center"><strong>Character overview</strong></p>
+
 ![Character overview](https://github.com/mrbandler/wow-ui/blob/master/screenshots/character-overview.png)
 
 ## 3. License
