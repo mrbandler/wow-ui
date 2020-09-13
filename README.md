@@ -40,7 +40,8 @@ Don't worry the script is non-distructive, it creates a backup of you current co
 
 ## 2. Screenshots
 
-<p align="center">**Out of combat**</p>
+<p align="center"><strong>Out of combat</strong></p>
+
 ![Out of combat](https://github.com/mrbandler/wow-ui/blob/master/screenshots/out-of-combat.png)
 
 Character and bag
