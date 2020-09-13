@@ -59,10 +59,10 @@ MSBTProfiles_SavedVars = {
 					["disabled"] = true,
 				},
 				["MSBT_TRIGGER_LOW_HEALTH"] = {
-					["disabled"] = true,
-					["soundFile"] = "Omen: Aoogah!",
 					["mainEvents"] = "UNIT_HEALTH{unitID;;eq;;player;;threshold;;lt;;25}",
 					["iconSkill"] = "3273",
+					["disabled"] = true,
+					["soundFile"] = "Omen: Aoogah!",
 				},
 				["MSBT_TRIGGER_BACKLASH"] = {
 					["disabled"] = true,
@@ -109,7 +109,7 @@ MSBTProfiles_SavedVars = {
 				["MSBT_TRIGGER_LOW_PET_HEALTH"] = {
 					["disabled"] = true,
 				},
-				["MSBT_TRIGGER_KILLING_MACHINE"] = {
+				["MSBT_TRIGGER_MOLTEN_CORE"] = {
 					["disabled"] = true,
 				},
 				["MSBT_TRIGGER_ECLIPSE_SOLAR"] = {
@@ -133,7 +133,7 @@ MSBTProfiles_SavedVars = {
 				["MSBT_TRIGGER_BLOODSURGE"] = {
 					["disabled"] = true,
 				},
-				["MSBT_TRIGGER_MOLTEN_CORE"] = {
+				["MSBT_TRIGGER_KILLING_MACHINE"] = {
 					["disabled"] = true,
 				},
 				["MSBT_TRIGGER_HAMMER_OF_WRATH"] = {
@@ -216,13 +216,13 @@ MSBTProfiles_SavedVars = {
 				["NOTIFICATION_POWER_GAIN"] = {
 					["disabled"] = true,
 				},
-				["NOTIFICATION_CP_FULL"] = {
+				["NOTIFICATION_BUFF_STACK"] = {
 					["disabled"] = true,
 				},
 				["NOTIFICATION_ENEMY_BUFF"] = {
 					["disabled"] = true,
 				},
-				["NOTIFICATION_BUFF_STACK"] = {
+				["NOTIFICATION_CP_FULL"] = {
 					["disabled"] = true,
 				},
 				["NOTIFICATION_EXTRA_ATTACK"] = {
@@ -252,19 +252,6 @@ MSBTProfiles_SavedVars = {
 				},
 			},
 			["scrollAreas"] = {
-				["Outgoing"] = {
-					["direction"] = "Up",
-					["stickyBehavior"] = "MSBT_NORMAL",
-					["scrollHeight"] = 150,
-					["stickyDirection"] = "Up",
-					["scrollWidth"] = 130,
-					["offsetX"] = 165,
-					["behavior"] = "MSBT_NORMAL",
-					["iconAlign"] = "Left",
-					["offsetY"] = 10,
-					["animationStyle"] = "Straight",
-					["stickyAnimationStyle"] = "Static",
-				},
 				["Notification"] = {
 					["direction"] = "Up",
 					["stickyDirection"] = "Up",
@@ -276,10 +263,6 @@ MSBTProfiles_SavedVars = {
 					["critFontSize"] = 16,
 					["normalFontSize"] = 16,
 				},
-				["Static"] = {
-					["disabled"] = true,
-					["offsetY"] = -65,
-				},
 				["Incoming"] = {
 					["direction"] = "Up",
 					["behavior"] = "MSBT_NORMAL",
@@ -289,6 +272,23 @@ MSBTProfiles_SavedVars = {
 					["offsetX"] = -295,
 					["scrollWidth"] = 130,
 					["iconAlign"] = "Right",
+					["offsetY"] = 10,
+					["animationStyle"] = "Straight",
+					["stickyAnimationStyle"] = "Static",
+				},
+				["Static"] = {
+					["disabled"] = true,
+					["offsetY"] = -65,
+				},
+				["Outgoing"] = {
+					["direction"] = "Up",
+					["stickyBehavior"] = "MSBT_NORMAL",
+					["scrollHeight"] = 150,
+					["stickyDirection"] = "Up",
+					["scrollWidth"] = 130,
+					["offsetX"] = 165,
+					["behavior"] = "MSBT_NORMAL",
+					["iconAlign"] = "Left",
 					["offsetY"] = 10,
 					["animationStyle"] = "Straight",
 					["stickyAnimationStyle"] = "Static",

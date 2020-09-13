@@ -4,17 +4,17 @@ CliqueDB3 = {
 	["char"] = {
 		["Ischozar - Thrall"] = {
 			["spec1_profileKey"] = "Ischozar - Thrall",
+			["fastooc"] = false,
 			["spec2_profileKey"] = "Ischozar - Thrall",
 			["downclick"] = false,
-			["fastooc"] = false,
 			["spec3_profileKey"] = "Ischozar - Thrall",
 			["specswap"] = false,
 		},
 		["Drâon - Thrall"] = {
 			["spec1_profileKey"] = "Drâon - Thrall",
-			["fastooc"] = false,
-			["downclick"] = false,
 			["spec3_profileKey"] = "Drâon - Thrall",
+			["downclick"] = false,
+			["fastooc"] = false,
 			["spec2_profileKey"] = "Drâon - Thrall",
 			["specswap"] = false,
 		},

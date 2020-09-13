@@ -1,55 +1,6 @@
 
 Grid2DB = {
 	["namespaces"] = {
-		["Grid2RaidDebuffs"] = {
-			["profiles"] = {
-				["RealUI-Healing"] = {
-					["enabledModules"] = {
-						["Battle for Azeroth"] = true,
-					},
-				},
-			},
-		},
-		["Grid2Layout"] = {
-			["profiles"] = {
-				["RealUI"] = {
-					["BackgroundTexture"] = "None",
-					["layouts"] = {
-						["solo"] = "None",
-					},
-					["extraThemes"] = {
-					},
-					["FrameLock"] = true,
-					["BorderTexture"] = "None",
-					["anchor"] = "BOTTOM",
-					["groupAnchor"] = "BOTTOMLEFT",
-					["PosY"] = 41.95558912356773,
-					["minimapIcon"] = {
-						["minimapPos"] = 33.54123289885757,
-					},
-					["PosX"] = 4.266620654528879,
-					["ClickThrough"] = true,
-				},
-				["RealUI-Healing"] = {
-					["BackgroundTexture"] = "None",
-					["PosY"] = -199.041577582324,
-					["layouts"] = {
-						["solo"] = "None",
-					},
-					["extraThemes"] = {
-					},
-					["FrameLock"] = true,
-					["PosX"] = -0.000104980466403504,
-					["anchor"] = "CENTER",
-					["ClickThrough"] = true,
-					["BorderTexture"] = "None",
-				},
-			},
-		},
-		["Grid2AoeHeals"] = {
-		},
-		["Grid2Options"] = {
-		},
 		["Grid2Frame"] = {
 			["profiles"] = {
 				["RealUI"] = {
@@ -84,13 +35,49 @@ Grid2DB = {
 					["fontFlags"] = "OUTLINE",
 					["font"] = "Roboto",
 					["frameBorderTexture"] = "None",
+					["orientation"] = "HORIZONTAL",
 					["frameContentColor"] = {
 						["a"] = 0.5,
 					},
-					["orientation"] = "HORIZONTAL",
 					["frameTexture"] = "Plain",
 					["frameWidth"] = 70,
 					["frameBorderDistance"] = 0,
+				},
+			},
+		},
+		["Grid2Layout"] = {
+			["profiles"] = {
+				["RealUI"] = {
+					["BackgroundTexture"] = "None",
+					["layouts"] = {
+						["solo"] = "None",
+					},
+					["extraThemes"] = {
+					},
+					["FrameLock"] = true,
+					["ClickThrough"] = true,
+					["anchor"] = "BOTTOM",
+					["groupAnchor"] = "BOTTOMLEFT",
+					["PosY"] = 41.95558912356773,
+					["minimapIcon"] = {
+						["minimapPos"] = 33.54123289885757,
+					},
+					["PosX"] = 4.266620654528879,
+					["BorderTexture"] = "None",
+				},
+				["RealUI-Healing"] = {
+					["BackgroundTexture"] = "None",
+					["PosY"] = -199.041577582324,
+					["layouts"] = {
+						["solo"] = "None",
+					},
+					["extraThemes"] = {
+					},
+					["FrameLock"] = true,
+					["PosX"] = -0.000104980466403504,
+					["anchor"] = "CENTER",
+					["ClickThrough"] = true,
+					["BorderTexture"] = "None",
 				},
 			},
 		},
@@ -109,6 +96,19 @@ Grid2DB = {
 					["enabled"] = true,
 				},
 			},
+		},
+		["Grid2Options"] = {
+		},
+		["Grid2RaidDebuffs"] = {
+			["profiles"] = {
+				["RealUI-Healing"] = {
+					["enabledModules"] = {
+						["Battle for Azeroth"] = true,
+					},
+				},
+			},
+		},
+		["Grid2AoeHeals"] = {
 		},
 	},
 	["profileKeys"] = {
@@ -315,8 +315,8 @@ Grid2DB = {
 						["g"] = 0,
 						["r"] = 0,
 					},
-					["font"] = "Roboto Condensed",
 					["borderSize"] = 1,
+					["font"] = "Roboto Condensed",
 					["fontSize"] = 8,
 					["location"] = {
 						["y"] = 1,
@@ -412,9 +412,9 @@ Grid2DB = {
 				},
 				["corner-top-right"] = {
 					["raid-assistant"] = 50,
-					["buff-PowerWordShield"] = 99,
 					["debuff-WeakenedSoul"] = 89,
 					["leader"] = 51,
+					["buff-PowerWordShield"] = 99,
 				},
 				["text-down"] = {
 					["offline"] = 102,
@@ -632,10 +632,10 @@ Grid2DB = {
 			},
 			["themes"] = {
 				["enabled"] = {
-					["party"] = 0,
 					["raid"] = 0,
-					["solo"] = 0,
+					["party"] = 0,
 					["default"] = 0,
+					["solo"] = 0,
 				},
 				["indicators"] = {
 					[0] = {
@@ -1489,14 +1489,14 @@ Grid2DB = {
 				["health-deficit"] = {
 				},
 				["icon-left"] = {
-					["raid-icon-player"] = 155,
 					["buff-EternalFlame-mine"] = 51,
+					["raid-icon-player"] = 155,
 					["buff-Rejuvenation-mine"] = 55,
 					["buff-Lifebloom-mine"] = 56,
-					["buff-SpiritShell-mine"] = 53,
+					["buff-RenewingMist-mine"] = 50,
 					["buff-Riptide-mine"] = 52,
 					["buff-Renew-mine"] = 54,
-					["buff-RenewingMist-mine"] = 50,
+					["buff-SpiritShell-mine"] = 53,
 				},
 				["border"] = {
 					["target"] = 50,

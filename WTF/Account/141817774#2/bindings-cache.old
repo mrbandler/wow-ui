@@ -1,0 +1,10 @@
+BINDINGMODE 0
+bind BUTTON3 NONE
+bind A STRAFELEFT
+bind D STRAFERIGHT
+bind Q TURNLEFT
+bind E TURNRIGHT
+bind CTRL-S NONE
+bind CTRL-W NONE
+bind BUTTON5 Toggle Chat (Right)
+bind ^ Toggle Chat (Left)

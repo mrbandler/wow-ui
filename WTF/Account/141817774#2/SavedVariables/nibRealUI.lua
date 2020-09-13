@@ -155,13 +155,75 @@ nibRealUIDB = {
 				},
 			},
 		},
-		["UnitFrames"] = {
-		},
 		["CastBars"] = {
+		},
+		["UnitFrames"] = {
 		},
 		["CombatFader"] = {
 		},
-		["Objectives Adv."] = {
+		["FrameMover"] = {
+			["profiles"] = {
+				["Thrall"] = {
+					["uiframes"] = {
+						["zonetext"] = {
+						},
+						["playerpowerbaralt"] = {
+						},
+						["vsi"] = {
+						},
+						["errorframe"] = {
+						},
+					},
+				},
+				["Default"] = {
+					["uiframes"] = {
+						["zonetext"] = {
+						},
+						["errorframe"] = {
+						},
+						["playerpowerbaralt"] = {
+						},
+						["vsi"] = {
+						},
+					},
+				},
+				["RealUI"] = {
+					["uiframes"] = {
+						["zonetext"] = {
+						},
+						["errorframe"] = {
+						},
+						["playerpowerbaralt"] = {
+						},
+						["vsi"] = {
+						},
+					},
+				},
+				["Ischozar - Thrall"] = {
+					["uiframes"] = {
+						["zonetext"] = {
+						},
+						["vsi"] = {
+						},
+						["errorframe"] = {
+						},
+						["playerpowerbaralt"] = {
+						},
+					},
+				},
+				["Drâon - Thrall"] = {
+					["uiframes"] = {
+						["zonetext"] = {
+						},
+						["vsi"] = {
+						},
+						["errorframe"] = {
+						},
+						["playerpowerbaralt"] = {
+						},
+					},
+				},
+			},
 		},
 		["AltPowerBar"] = {
 		},
@@ -180,11 +242,11 @@ nibRealUIDB = {
 							},
 							["progress"] = {
 							},
-							["spec"] = {
+							["bags"] = {
 							},
 							["currency"] = {
 							},
-							["bags"] = {
+							["spec"] = {
 							},
 						},
 					},
@@ -202,11 +264,11 @@ nibRealUIDB = {
 							},
 							["progress"] = {
 							},
-							["bags"] = {
+							["spec"] = {
 							},
 							["currency"] = {
 							},
-							["spec"] = {
+							["bags"] = {
 							},
 						},
 					},
@@ -251,11 +313,11 @@ nibRealUIDB = {
 							},
 							["progress"] = {
 							},
-							["spec"] = {
+							["bags"] = {
 							},
 							["currency"] = {
 							},
-							["bags"] = {
+							["spec"] = {
 							},
 						},
 					},
@@ -273,11 +335,11 @@ nibRealUIDB = {
 							},
 							["progress"] = {
 							},
-							["bags"] = {
+							["spec"] = {
 							},
 							["currency"] = {
 							},
-							["spec"] = {
+							["bags"] = {
 							},
 						},
 					},
@@ -288,69 +350,7 @@ nibRealUIDB = {
 		},
 		["EventNotifier"] = {
 		},
-		["FrameMover"] = {
-			["profiles"] = {
-				["Thrall"] = {
-					["uiframes"] = {
-						["zonetext"] = {
-						},
-						["errorframe"] = {
-						},
-						["playerpowerbaralt"] = {
-						},
-						["vsi"] = {
-						},
-					},
-				},
-				["Default"] = {
-					["uiframes"] = {
-						["zonetext"] = {
-						},
-						["vsi"] = {
-						},
-						["errorframe"] = {
-						},
-						["playerpowerbaralt"] = {
-						},
-					},
-				},
-				["RealUI"] = {
-					["uiframes"] = {
-						["zonetext"] = {
-						},
-						["errorframe"] = {
-						},
-						["playerpowerbaralt"] = {
-						},
-						["vsi"] = {
-						},
-					},
-				},
-				["Ischozar - Thrall"] = {
-					["uiframes"] = {
-						["zonetext"] = {
-						},
-						["playerpowerbaralt"] = {
-						},
-						["vsi"] = {
-						},
-						["errorframe"] = {
-						},
-					},
-				},
-				["Drâon - Thrall"] = {
-					["uiframes"] = {
-						["zonetext"] = {
-						},
-						["playerpowerbaralt"] = {
-						},
-						["vsi"] = {
-						},
-						["errorframe"] = {
-						},
-					},
-				},
-			},
+		["Objectives Adv."] = {
 		},
 		["InterfaceTweaks"] = {
 			["global"] = {
@@ -365,9 +365,9 @@ nibRealUIDB = {
 			["Thrall"] = {
 				["Horde"] = {
 					["Ischozar"] = {
-						["money"] = 1635,
+						["money"] = 51444,
 						["class"] = "WARLOCK",
-						["lastSeen"] = 1599404785,
+						["lastSeen"] = 1600017519,
 					},
 					["Drâon"] = {
 						["money"] = 1846077,
@@ -398,6 +398,7 @@ nibRealUIDB = {
 				["Objectives Adv."] = false,
 			},
 			["registeredChars"] = {
+				["Ischozar - Thrall"] = true,
 				["Drâon - Thrall"] = true,
 			},
 			["positions"] = {

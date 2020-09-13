@@ -2,8 +2,8 @@ Version: 1
 Frame: MBB_MinimapButtonFrame
 FrameLevel: 11
 Anchor: TOPLEFT
-X: 132
-Y: 0
+X: 39
+Y: -146
 W: 33
 H: 33
 Frame: Minimap
@@ -11,5 +11,5 @@ FrameLevel: 1
 Anchor: TOPLEFT
 X: 7
 Y: -7
-W: 142
-H: 142
+W: 134
+H: 134
