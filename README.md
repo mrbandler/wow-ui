@@ -40,6 +40,8 @@ Don't worry the script is non-distructive, it creates a backup of you current co
 
 ## 2. Screenshots
 
+<p align="center">
+
 Out of combat
 ![Out of combat](https://github.com/mrbandler/wow-ui/blob/master/screenshots/out-of-combat.png)
 
@@ -61,7 +63,7 @@ NPC Interaction
 Character overview
 ![Character overview](https://github.com/mrbandler/wow-ui/blob/master/screenshots/character-overview.png)
 
----
+</p>
 
 ## 3. License
 
